@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,13 +7,20 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float boostMultiplier = 2f;
     [SerializeField] private float moveVelocity;
+    [Space]
+    [SerializeField] private float boostMultiplier = 2f;
+    [Space]
+    [SerializeField] private float dashForce = 4f;
+    [SerializeField] private float dashCooldown = 2f;
 
     [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private Vector2 moveDirection;
+
+    [Header("Booleans")]
     private bool isBoosting = false;
+    private bool canDash = true;
 
     private void Start()
     {
@@ -39,5 +47,23 @@ public class PlayerMovement : MonoBehaviour
     public void OnBoost(InputAction.CallbackContext ctx)
     {
         isBoosting = ctx.performed;
+    }
+
+    public void OnDash(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
+    }
+
+    private IEnumerator Dash()
+    {
+        rb.linearVelocity = (moveDirection * moveSpeed * dashForce);
+
+        canDash = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 }
