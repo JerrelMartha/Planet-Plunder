@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("References")]
     private Rigidbody2D rb;
     private Vector2 moveDirection;
+    private Vector2 lookDirection;
 
     [Header("Booleans")]
     private bool isBoosting = false;
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         moveVelocity = Mathf.Round(rb.linearVelocity.magnitude);
+
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
+        lookDirection = (mousePos - (Vector2)transform.position).normalized;
     }
 
     private void FixedUpdate()
@@ -60,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        rb.linearVelocity = (moveDirection * moveSpeed * dashForce);
+        rb.linearVelocity = (lookDirection * moveSpeed * dashForce);
 
         canDash = false;
         yield return new WaitForSeconds(dashCooldown);
