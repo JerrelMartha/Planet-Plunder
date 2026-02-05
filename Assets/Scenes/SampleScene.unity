@@ -353,8 +353,8 @@ GameObject:
   - component: {fileID: 873213398}
   - component: {fileID: 873213397}
   - component: {fileID: 873213396}
-  - component: {fileID: 873213395}
   - component: {fileID: 873213401}
+  - component: {fileID: 873213395}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -650,6 +650,7 @@ MonoBehaviour:
   target: {fileID: 0}
   offsetZ: -1
   easing: 2
+  playerMovement: {fileID: 873213396}
 --- !u!1 &1929854261
 GameObject:
   m_ObjectHideFlags: 0
