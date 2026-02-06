@@ -18,6 +18,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float maxZoom = 20f;
     private float zoomTarget;
 
+    [Header("References")]
     [SerializeField] private PlayerMovement playerMovement;
 
     private void Start()
@@ -32,7 +33,9 @@ public class PlayerCamera : MonoBehaviour
         Camera cam = Camera.main;
         Vector2 scrollDelta = Mouse.current.scroll.ReadValue();
 
-        float targetEasing = followEasing * 0.2f * playerMovement.GetMovementSpeed();
+        float zoomFactor = 0.1f / cam.orthographicSize * 10;
+
+        float targetEasing = followEasing * zoomFactor * playerMovement.GetMovementSpeed();
 
         // Follow player
         Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, offsetZ);
