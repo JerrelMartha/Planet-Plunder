@@ -494,8 +494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
   moveVelocity: 0
-  boostMultiplier: 2
-  dashForce: 1.5
+  boostMultiplier: 1.5
+  dashForce: 2
   dashCooldown: 2
 --- !u!50 &873213397
 Rigidbody2D:
@@ -649,7 +649,11 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   target: {fileID: 0}
   offsetZ: -1
-  easing: 2
+  followEasing: 2
+  zoomEasing: 2
+  zoomStrength: 0.5
+  minZoom: 3
+  maxZoom: 20
   playerMovement: {fileID: 873213396}
 --- !u!1 &1929854261
 GameObject:

@@ -75,4 +75,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return moveSpeed;
     }
+
+    public float GetVelocity()
+    {
+        return rb.linearVelocity.magnitude;
+    }
 }
