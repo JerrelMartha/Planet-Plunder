@@ -628,7 +628,7 @@ Transform:
   m_GameObject: {fileID: 873213394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8444, y: -1.94935, z: 0}
+  m_LocalPosition: {x: -0.04, y: 0.37, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -902,8 +902,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   cursorSprites:
   - {fileID: 2800000, guid: 8b11653c674ca884198b5c4ae2b37cb0, type: 3}
-  - {fileID: 2800000, guid: 2559116edfee8344fbe7f584e71b689f, type: 3}
-  - {fileID: 2800000, guid: 137972f55ecd1ed42bbaa82c26a804eb, type: 3}
+  - {fileID: 2800000, guid: ea829bd338dcc9940bc110f5544c517a, type: 3}
+  - {fileID: 2800000, guid: 7f656da96c21f7049a057c8adb8435a2, type: 3}
+  clickParticle: {fileID: 0}
 --- !u!4 &1616014163
 Transform:
   m_ObjectHideFlags: 0
