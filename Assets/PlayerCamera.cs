@@ -33,8 +33,10 @@ public class PlayerCamera : MonoBehaviour
     {
         Vector2 scrollDelta = Mouse.current.scroll.ReadValue();
 
-        if (scrollDelta.y > 0)
+        if (scrollDelta.y > 0 && !AtMinZoom())
         {
+            
+
             PlayerCursor.instance.ChangeSprite(PlayerCursor.Cursors.ZoomIn);
 
             if (coroutine != null)
@@ -45,8 +47,9 @@ public class PlayerCamera : MonoBehaviour
             coroutine = StartCoroutine(PlayerCursor.instance.DefaultCursorCooldown(0.4f));
         }
 
-        if (scrollDelta.y < 0)
+        if (scrollDelta.y < 0 && !AtMaxZoom())
         {
+
             PlayerCursor.instance.ChangeSprite(PlayerCursor.Cursors.ZoomOut);
 
             if (coroutine != null)
@@ -79,5 +82,15 @@ public class PlayerCamera : MonoBehaviour
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoomTarget, zoomEasing * Time.deltaTime);
 
     }
+
+    public bool AtMinZoom()
+    {
+        return zoomTarget < minZoom + 0.01f;
+    }
+    public bool AtMaxZoom()
+    {
+        return zoomTarget > maxZoom - 0.01f;
+    }
+
 
 }
