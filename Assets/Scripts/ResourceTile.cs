@@ -4,11 +4,17 @@ public class ResourceTile : MonoBehaviour
 {
     [SerializeField] public ResourceTileSO tileStats;
     [SerializeField] private float health;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private void Awake()
+    private void Start()
     {
         health = tileStats.health;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer.color = tileStats.color;
     }
+
+    
     public void TakeDamage(float amount)
     {
         health -= amount;
@@ -18,6 +24,7 @@ public class ResourceTile : MonoBehaviour
             Die();
         }
 
+        spriteRenderer.color = Color.Lerp(Color.black, tileStats.color, GetHealthNormalized());
         // Hit effect & Sounds
     }
 
@@ -26,5 +33,10 @@ public class ResourceTile : MonoBehaviour
     {
         Instantiate(tileStats.droppedResource, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private float GetHealthNormalized()
+    {
+        return health / tileStats.health;
     }
 }

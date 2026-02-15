@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2645758356170404738}
   - component: {fileID: 3773621809546408031}
   - component: {fileID: 5402159049944349494}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BaseTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   tileStats: {fileID: 0}
   health: 0
+  spriteRenderer: {fileID: 2645758356170404738}
 --- !u!61 &5402159049944349494
 BoxCollider2D:
   m_ObjectHideFlags: 0

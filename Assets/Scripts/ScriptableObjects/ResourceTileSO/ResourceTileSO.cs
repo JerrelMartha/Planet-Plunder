@@ -5,5 +5,6 @@ public class ResourceTileSO : ScriptableObject
 {
     public string resourceName;
     public GameObject droppedResource;
+    public Color color;
     public float health;
 }

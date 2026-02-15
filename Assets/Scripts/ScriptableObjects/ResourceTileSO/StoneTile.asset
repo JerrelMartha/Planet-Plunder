@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Stone
   droppedResource: {fileID: 4432026394350351376, guid: fcfef3babac2c8a43a2abf1a00fc0205, type: 3}
+  color: {r: 0.2905661, g: 0.2905661, b: 0.2905661, a: 1}
   health: 30

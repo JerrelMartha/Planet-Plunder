@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Gold
   droppedResource: {fileID: 0}
+  color: {r: 1, g: 0.9775631, b: 0.47358483, a: 1}
   health: 200

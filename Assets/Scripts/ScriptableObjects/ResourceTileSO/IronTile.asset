@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: IronTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Iron
+  droppedResource: {fileID: 0}
+  color: {r: 0.735849, g: 0.5680274, b: 0.36514768, a: 1}
   health: 90

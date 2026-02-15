@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DirtTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Dirt
+  droppedResource: {fileID: 0}
+  color: {r: 0.19245279, g: 0.10228592, b: 0.043211076, a: 1}
   health: 10
