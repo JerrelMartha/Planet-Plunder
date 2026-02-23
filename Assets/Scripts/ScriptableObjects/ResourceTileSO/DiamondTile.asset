@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3924c3be4b73a0448886cd062e967e62, type: 3}
-  m_Name: StoneTile
+  m_Name: DiamondTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
-  resourceName: Stone
-  droppedResource: {fileID: 4432026394350351376, guid: fcfef3babac2c8a43a2abf1a00fc0205, type: 3}
-  color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
-  health: 30
+  resourceName: Diamond
+  droppedResource: {fileID: 4432026394350351376, guid: be5f40f419ac0934ba3a273c84713b83, type: 3}
+  color: {r: 0.6773585, g: 1, b: 0.99666643, a: 1}
+  health: 1000

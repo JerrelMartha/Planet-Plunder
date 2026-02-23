@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GoldTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Gold
-  droppedResource: {fileID: 0}
-  color: {r: 1, g: 0.9775631, b: 0.47358483, a: 1}
+  droppedResource: {fileID: 4432026394350351376, guid: 395f5cf0ca8c47349960d558ea77c15e, type: 3}
+  color: {r: 0.7735849, g: 0.7579651, b: 0.42474183, a: 1}
   health: 200
