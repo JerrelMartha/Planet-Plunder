@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DirtTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Dirt
+  tileSprite: {fileID: 1797164055380252450, guid: f06c39af71970564ab30fdde1875cb5b, type: 3}
   droppedResource: {fileID: 4432026394350351376, guid: f70b0e367138b694f896bda937a39f90, type: 3}
-  color: {r: 0.5622641, g: 0.32147318, b: 0.16443564, a: 1}
+  particles: {fileID: 4494805373617972981, guid: 97b287dcac3e23546a3e95ddcbe770c5, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   health: 10

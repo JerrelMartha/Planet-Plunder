@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -5324161133598825916}
   - component: {fileID: -6285842926041115491}
   - component: {fileID: 7827189260560943138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Resource_Iron
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

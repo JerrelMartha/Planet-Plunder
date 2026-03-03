@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DiamondTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Diamond
+  tileSprite: {fileID: 4094377619050642863, guid: 564a8156bbb53034bba9e49f1990e9f7, type: 3}
   droppedResource: {fileID: 4432026394350351376, guid: be5f40f419ac0934ba3a273c84713b83, type: 3}
-  color: {r: 0.6773585, g: 1, b: 0.99666643, a: 1}
+  particles: {fileID: 4494805373617972981, guid: c26b910f29544cc47a74b0f95c367960, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   health: 1000

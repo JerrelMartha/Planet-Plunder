@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: StoneTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Stone
+  tileSprite: {fileID: 4866414936888787194, guid: 52f69c1353c3fa34299517561561cf04, type: 3}
   droppedResource: {fileID: 4432026394350351376, guid: fcfef3babac2c8a43a2abf1a00fc0205, type: 3}
-  color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
+  particles: {fileID: 4494805373617972981, guid: 83b27332cb25cb64586f64d7df05b6a1, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   health: 30

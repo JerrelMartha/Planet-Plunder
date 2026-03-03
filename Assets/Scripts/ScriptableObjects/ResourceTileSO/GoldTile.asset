@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: GoldTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Gold
+  tileSprite: {fileID: 660828182893605972, guid: 05d9b4d6898446e4f96354613b6719df, type: 3}
   droppedResource: {fileID: 4432026394350351376, guid: 395f5cf0ca8c47349960d558ea77c15e, type: 3}
-  color: {r: 0.7735849, g: 0.7579651, b: 0.42474183, a: 1}
+  particles: {fileID: 4494805373617972981, guid: 4ce2d96b8ee4b4f48a91d4bcbe59f0c7, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   health: 200

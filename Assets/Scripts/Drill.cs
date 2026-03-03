@@ -3,7 +3,7 @@ using UnityEngine;
 public class Drill : Weapon
 {
     [SerializeField] private float drillRadius = 1f;
-    [SerializeField] private float offset = 4f;
+    [SerializeField] private float offset = 5f;
     [SerializeField] private LayerMask resourceLayer;
 
     public bool BuffedDrillActive = false;

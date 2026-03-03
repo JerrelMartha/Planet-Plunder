@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: IronTile
   m_EditorClassIdentifier: Assembly-CSharp::ResourceTileSO
   resourceName: Iron
+  tileSprite: {fileID: -2140589444866277072, guid: 08654e5ef4cd6474f9aabcc0213ee23f, type: 3}
   droppedResource: {fileID: 4432026394350351376, guid: 6ae3c03da035db342b9a1a285764291a, type: 3}
-  color: {r: 0.5471698, g: 0.4448322, b: 0.32107508, a: 1}
+  particles: {fileID: 4494805373617972981, guid: b6082c83e2c5cc84cbcacc75bce2d0a6, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   health: 90
