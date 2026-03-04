@@ -532,39 +532,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &799281390 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5142225626487193091, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-  m_PrefabInstance: {fileID: 4670119903695043033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &799281391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-  m_PrefabInstance: {fileID: 4670119903695043033}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b0455dea2fdf84185d1bbc55b5fa54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Drill
---- !u!1 &873213394 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2536204192055280453, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-  m_PrefabInstance: {fileID: 4670119903695043033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &873213402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873213394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069f9cd3f5db4e548a68ad9249d4da45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &1355778995
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,49 +726,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: offset
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: firepoint
-      value: 
-      objectReference: {fileID: 799281390}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: attackSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: drillRadius
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: BuffedDrillActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: resourceLayer.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067606379100153966, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: Assembly-CSharp::Drill
-      objectReference: {fileID: 0}
     - target: {fileID: 2536204192055280453, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5041261646858974740, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5041261646858974740, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5041261646858974740, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -843,37 +770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5142225626487193091, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5142225626487193091, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5142225626487193091, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 799281391}
-    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TryFire
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Drill, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2536204192055280453, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 873213402}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

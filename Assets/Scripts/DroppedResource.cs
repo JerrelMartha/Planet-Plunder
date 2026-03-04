@@ -20,7 +20,7 @@ public class DroppedResource : MonoBehaviour
         }
     }
 
-    private void Collect()
+    public void Collect()
     {
         SoundManager.instance.PlaySound(0, true);
         Destroy(gameObject);

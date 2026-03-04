@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2645758356170404738}
   - component: {fileID: 3773621809546408031}
   - component: {fileID: 5402159049944349494}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: BaseTile
-  m_TagString: Resource
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
