@@ -1210,6 +1210,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: maxFuel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: dashCost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: drillDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: drillRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: boostMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: collectionRange
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: drillAttackSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: Assembly-CSharp::PlayerStats
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
