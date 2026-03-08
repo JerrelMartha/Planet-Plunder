@@ -29,7 +29,7 @@ public class Planet : MonoBehaviour
     public void RandomPlanet()
     {
         
-        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Resource");
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
         foreach (var item in tiles) Destroy(item);
 
         seed = Random.Range(0, 10000);
