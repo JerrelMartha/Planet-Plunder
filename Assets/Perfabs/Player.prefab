@@ -114,7 +114,7 @@ MonoBehaviour:
   resourceLayer:
     serializedVersion: 2
     m_Bits: 64
-  BuffedDrillActive: 1
+  BuffedDrillActive: 0
 --- !u!1 &1929123424378384497
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +214,8 @@ GameObject:
   - component: {fileID: 122725063181961206}
   - component: {fileID: 9169932326760240964}
   - component: {fileID: 8748935892285874662}
+  - component: {fileID: 6121468432588921394}
+  - component: {fileID: 3417471554505167173}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -373,10 +375,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
-  moveVelocity: 0
   boostMultiplier: 1.5
   dashForce: 2
   dashCooldown: 2
+  dashCost: 1
 --- !u!114 &122725063181961206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,3 +546,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069f9cd3f5db4e548a68ad9249d4da45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &6121468432588921394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536204192055280453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15e2da097e049c4c9aa7c713e01432c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  moveSpeed: 5
+  dashForce: 2
+  boostMultiplier: 1.5
+  dashCooldown: 2
+  dashCost: 1
+  maxFuel: 20
+  fuelSteal: 0
+  drillRadius: 1
+  drillAttackSpeed: 5
+  drillDamage: 1
+  collectionRange: 1.5
+--- !u!114 &3417471554505167173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536204192055280453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e9d7fbd30d1e347af6d7852c7c69e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  currentFuel: 0
+  maxFuel: 0

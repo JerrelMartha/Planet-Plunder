@@ -10,10 +10,7 @@ public class Drill : Weapon
 
     private void Start()
     {
-        if (BuffedDrillActive)
-        {
-            OPDrill();
-        }
+        InitializeStats();
     }
     protected override void Update()
     {
@@ -35,20 +32,19 @@ public class Drill : Weapon
         }
     }
 
-    [ContextMenu("Overpowered Drill")]
-    public void OPDrill()
-    {
-        drillRadius = 3f;
-        damage = 30f;
-        attackSpeed = 15f;
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (firepoint == null) return;
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(firepoint.position, drillRadius);
+    }
+
+    private void InitializeStats()
+    {
+        drillRadius = PlayerStats.instance.drillRadius;
+        damage = PlayerStats.instance.drillDamage;
+        attackSpeed = PlayerStats.instance.drillAttackSpeed;
     }
 }
 

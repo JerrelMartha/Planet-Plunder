@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,13 +7,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float moveVelocity;
+    [SerializeField] private float moveSpeed;
     [Space]
-    [SerializeField] private float boostMultiplier = 2f;
+    [SerializeField] private float boostMultiplier;
     [Space]
     [SerializeField] private float dashForce = 4f;
     [SerializeField] private float dashCooldown = 2f;
+    [SerializeField] private float dashCost = 1f;
 
     [Header("References")]
     private Rigidbody2D rb;
@@ -23,15 +24,18 @@ public class PlayerMovement : MonoBehaviour
     private bool isBoosting = false;
     private bool canDash = true;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>(); 
+    }
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        InitializeStats();
     }
 
     private void Update()
     {
-        moveVelocity = Mathf.Round(rb.linearVelocity.magnitude);
-
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
         lookDirection = (mousePos - (Vector2)transform.position).normalized;
     }
@@ -65,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Dash()
     {
         rb.linearVelocity = (lookDirection * moveSpeed * dashForce);
+        Fuel.instance.RemoveFuel(dashCost);
 
         canDash = false;
         yield return new WaitForSeconds(dashCooldown);
@@ -79,5 +84,19 @@ public class PlayerMovement : MonoBehaviour
     public float GetVelocity()
     {
         return rb.linearVelocity.magnitude;
+    }
+
+    public bool IsBoosting()
+    {
+        return isBoosting;
+    }
+
+    private void InitializeStats()
+    {
+        moveSpeed = PlayerStats.instance.moveSpeed;
+        boostMultiplier = PlayerStats.instance.boostMultiplier;
+        dashForce = PlayerStats.instance.dashForce;
+        dashCost = PlayerStats.instance.dashCost;
+        dashCooldown = PlayerStats.instance.dashCooldown;
     }
 }

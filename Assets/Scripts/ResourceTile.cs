@@ -36,13 +36,15 @@ public class ResourceTile : MonoBehaviour
     [ContextMenu("die")]
     private void Die()
     {
-        Instantiate(tileStats.droppedResource, transform.position, Quaternion.identity);
+        GameObject droppedResource = Instantiate(tileStats.droppedResource, transform.position, Quaternion.identity);
+        droppedResource.transform.parent = transform.parent; // Planet
         Destroy(gameObject);
     }
 
     public void SpawnParticles()
     {
         GameObject prt = Instantiate(tileStats.particles, transform.position, Quaternion.identity);
+        prt.transform.parent = transform;
         Destroy(prt, 2f);
     }
 

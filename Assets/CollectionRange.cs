@@ -10,6 +10,7 @@ public class CollectionRange : MonoBehaviour
     private void Start()
     {
         UpdateRange();
+        InitializeStats();
     }
 
     private void Update()
@@ -30,5 +31,10 @@ public class CollectionRange : MonoBehaviour
     private void UpdateRange()
     {
         transform.localScale = new Vector3(range, range, 1);
+    }
+
+    private void InitializeStats()
+    {
+        range = PlayerStats.instance.collectionRange;
     }
 }

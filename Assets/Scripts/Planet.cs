@@ -110,5 +110,6 @@ public class Planet : MonoBehaviour
     {
         GameObject generatedTile = Instantiate(baseTile, new Vector3(location.x, location.y, 0), Quaternion.identity);
         generatedTile.GetComponent<ResourceTile>().tileStats = resourceType;
+        generatedTile.transform.parent = transform;
     }
 }
