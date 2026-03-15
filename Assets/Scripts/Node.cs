@@ -95,7 +95,7 @@ public class Node : MonoBehaviour
             {
                 node.currentUpgradeAmount++;
             }
-            costData.cost += costData.cost; 
+            // costData.cost += costData.cost; 
         }
 
         PlayerStats.instance.InitializeAllStats();

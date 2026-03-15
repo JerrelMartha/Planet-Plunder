@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,8 +18,10 @@ public class PlayerResources : MonoBehaviour
     public static PlayerResources instance;
 
     // Holds resource type and how much of that resource you have
-    private Dictionary<Resource, float> resourceInventory = new Dictionary<Resource, float>();
-    private Dictionary<Resource, float> temporaryInventory = new Dictionary<Resource, float>();
+    private Dictionary<Resource, float> resourceInventory = new Dictionary<Resource, float>(); // The inventory with your total resources
+    private Dictionary<Resource, float> temporaryInventory = new Dictionary<Resource, float>(); // The inventory you have while on the planet
+
+    public static event Action TemporaryResourceAdded;
 
 
     private void Awake()
@@ -58,6 +61,8 @@ public class PlayerResources : MonoBehaviour
             temporaryInventory[resourceType] = 0;
         }
         temporaryInventory[resourceType] += amount;
+
+        TemporaryResourceAdded?.Invoke();
     }
 
     public void ResetTemporaryInventory()
