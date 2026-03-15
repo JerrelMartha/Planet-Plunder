@@ -70,7 +70,7 @@ public class Fuel : MonoBehaviour
         return currentFuel;
     }
 
-    private void InitializeStats()
+    public void InitializeStats()
     {
         maxFuel = PlayerStats.instance.maxFuel;
         currentFuel = maxFuel;

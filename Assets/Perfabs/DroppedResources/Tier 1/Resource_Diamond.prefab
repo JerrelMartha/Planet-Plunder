@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   force: 10
-  resourceTag: 
+  resourceType: 4
 --- !u!1 &8325277908887079428
 GameObject:
   m_ObjectHideFlags: 0

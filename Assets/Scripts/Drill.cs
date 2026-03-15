@@ -40,7 +40,7 @@ public class Drill : Weapon
         Gizmos.DrawWireSphere(firepoint.position, drillRadius);
     }
 
-    private void InitializeStats()
+    public void InitializeStats()
     {
         drillRadius = PlayerStats.instance.drillRadius;
         damage = PlayerStats.instance.drillDamage;

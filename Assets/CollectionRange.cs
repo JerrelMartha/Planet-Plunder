@@ -30,10 +30,10 @@ public class CollectionRange : MonoBehaviour
 
     private void UpdateRange()
     {
-        transform.localScale = new Vector3(range, range, 1);
+        transform.localScale = new Vector3(range, range, 1);  // Modifies scale to make the collider bigger
     }
 
-    private void InitializeStats()
+    public void InitializeStats()
     {
         range = PlayerStats.instance.collectionRange;
     }

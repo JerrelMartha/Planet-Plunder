@@ -4,7 +4,7 @@ public class DroppedResource : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float force = 10f;
-    [SerializeField] private string resourceTag;
+    [SerializeField] private Resource resourceType;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +23,8 @@ public class DroppedResource : MonoBehaviour
     public void Collect()
     {
         SoundManager.instance.PlaySound(0, true);
+        PlayerResources.instance.AddResource(resourceType, 1f);
+        PlayerResources.instance.AddTemporaryResource(resourceType, 1f);
         Destroy(gameObject);
     }
 }

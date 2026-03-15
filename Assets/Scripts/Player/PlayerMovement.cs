@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         return isBoosting;
     }
 
-    private void InitializeStats()
+    public void InitializeStats()
     {
         moveSpeed = PlayerStats.instance.moveSpeed;
         boostMultiplier = PlayerStats.instance.boostMultiplier;

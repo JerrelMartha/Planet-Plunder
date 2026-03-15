@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Max Fuel I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  upgradeName: Max Fuel I
+  upgradeDescription: Upgrades Max Fuel by 10
+  upgradeIcon: {fileID: 1680126496735290735, guid: 86a6c1c052ea2934ba387b3ea6f2040e, type: 3}
+  upgradeType: 0
+  statToUpgrade: 0
+  currentUpgradeAmount: 3
+  maxUpgrades: 3
+  upgradeAdd: 0
+  prerequisites:
+  - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
+  costs:
+  - resourceType: 0
+    cost: 100
+  - resourceType: 1
+    cost: 20
+  isUnlocked: 1
