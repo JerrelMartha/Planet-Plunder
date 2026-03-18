@@ -1,28 +1,26 @@
+using TMPro;
 using UnityEngine;
 
 public class InventoryUIHandler : MonoBehaviour
 {
-    public static InventoryUIHandler instance;
-    [SerializeField] private GameObject resourceCard;
+    [SerializeField] private GameObject[] textComponents;
+    [SerializeField] private InventoryUISO[] inventoryUISOs;
 
-    [SerializeField] private InventoryUISO[] resources;
-
-    private void Awake()
+    private void Update()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-
-        } else
-        {
-            Destroy(gameObject);
-        }
+        UpdateUI();
     }
-    public void SpawnCard(Resource resourceType, int resourceSO)
+    public void UpdateUI()
     {
-        GameObject card = Instantiate(resourceCard);
-        card.transform.SetParent(transform);
-        card.GetComponent<ResourceCardUI>().so = resources[resourceSO];
+        int index = 0;
+        foreach (var item in textComponents)
+        {
+            ResourceCardUI cardUI = item.GetComponent<ResourceCardUI>();
+
+            cardUI.so = inventoryUISOs[index];
+            cardUI.UpdateInfo();
+
+            index++;
+        }
     }
 }

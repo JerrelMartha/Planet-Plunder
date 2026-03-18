@@ -13,6 +13,7 @@ public enum UpgradeType
 public class CostData
 {
     public Resource resourceType;
+    public Sprite resourceIcon;
     public float cost;
 }
 

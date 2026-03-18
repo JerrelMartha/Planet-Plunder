@@ -21,13 +21,13 @@ public class ResourceCardUI : MonoBehaviour
         PlayerResources.TemporaryResourceAdded -= UpdateInfo;
     }
 
-    
-    private void Start()
-    {
-        UpdateInfo();
-    }
     public void UpdateInfo()
     {
+        if (so == null || resourceNameText == null || resourceValueText == null || resourceIconImage == null)
+        {
+            return;
+        }
+
         resourceNameText.text = so.resourceName;
         resourceValueText.text = Mathf.FloorToInt(PlayerResources.instance.GetResourceAmount(so.resourceType)).ToString();
         resourceIconImage.sprite = so.resourceIcon;
