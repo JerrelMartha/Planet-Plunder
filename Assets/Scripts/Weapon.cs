@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
     public virtual void Fire()
     {
         GameObject spawnedObject = Instantiate(projectile, firepoint);
-        spawnedObject.transform.parent = firepoint;
+        
     }
     protected IEnumerator WeaponCooldown()
     {

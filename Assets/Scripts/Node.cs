@@ -1,7 +1,8 @@
-using UnityEngine.EventSystems;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using TMPro;
 
 public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -19,12 +20,16 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private bool costSpawned = false;
 
+    // Keeps track of all cost ui spawned
+    private List<TextMeshProUGUI> spawnedCostTexts = new List<TextMeshProUGUI>();
+
     private void Awake()
     {
         imageComponent = GetComponent<Image>();
         background = transform.parent;
         backgroundImage = background.GetComponent<Image>();
     }
+
     private void Start()
     {
         imageComponent.sprite = node.upgradeIcon;
@@ -35,7 +40,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         tooltip.SetActive(true);
         SetupTooltip();
-        
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -49,83 +53,53 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             Unlock();
         }
+
     }
 
     public bool CanAfford()
     {
-        // Gets the CostData in the costs List.
         foreach (var costData in node.costs)
         {
-            // From the CostData gets the resource type that needs to be paid and gets the players resource amount.
             float currentAmount = PlayerResources.instance.GetResourceAmount(costData.resourceType);
-
-            // Checks if player has enough of that resource.
-            if (currentAmount < costData.cost)
-            {
-                return false;
-            }
-            // Loop again if upgrade requires more than one resource.
+            if (currentAmount < costData.cost) return false;
         }
-
-        // returns true if player has enough resources for the upgrade.
         return true;
     }
 
     public bool HasPrerequisites()
     {
-        // If the list is null or empty, there are no requirements, so return true
-        if (node.prerequisites == null || node.prerequisites.Count == 0)
-        {
-            return true;
-        }
+        if (node.prerequisites == null || node.prerequisites.Count == 0) return true;
 
-        foreach (var node in node.prerequisites)
+        foreach (var prereq in node.prerequisites)
         {
-            // If that upgrade isn't unlocked returns false
-            if (!node.isUnlocked)
-            {
-                return false;
-            }
+            if (!prereq.isUnlocked) return false;
         }
-        // All upgrades are unlocked.
         return true;
     }
 
-    public bool IsUnlocked()
-    {
-        return node.isUnlocked;
-    }
-
-    public void Unlock()
-    {
-        node.isUnlocked = true;
-    }
+    public bool IsUnlocked() => node.isUnlocked;
+    public void Unlock() => node.isUnlocked = true;
 
     public void Buy()
     {
         if (!CanBuy()) return;
 
-
         foreach (var costData in node.costs)
         {
-            PlayerResources.instance.AddResource(costData.resourceType, -costData.cost); // Removes upgrade cost from player inventory
-            PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd); // Upgrades the stat.
-            
+            PlayerResources.instance.AddResource(costData.resourceType, -costData.cost);
+            PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
+
             if (node.currentUpgradeAmount < node.maxUpgrades)
             {
                 node.currentUpgradeAmount++;
             }
-            // costData.cost += costData.cost; 
         }
 
         PlayerStats.instance.InitializeAllStats();
         SetupTooltip();
     }
 
-    public bool IsMaxedOut()
-    {
-        return node.currentUpgradeAmount >= node.maxUpgrades;
-    }
+    public bool IsMaxedOut() => node.currentUpgradeAmount >= node.maxUpgrades;
 
     public bool CanBuy()
     {
@@ -136,60 +110,66 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         switch (upgradeType)
         {
-            case UpgradeType.Offense:
-                backgroundImage.color = Color.red;
-                break;
-            case UpgradeType.Mobility:
-                backgroundImage.color = Color.cyan;
-                break;
-            case UpgradeType.Utility:
-                backgroundImage.color = Color.limeGreen;
-                break;
-            case UpgradeType.Economy:
-                backgroundImage.color = Color.yellow;
-                break;
-            default:
-                break;
+            case UpgradeType.Offense: backgroundImage.color = Color.red; break;
+            case UpgradeType.Mobility: backgroundImage.color = Color.cyan; break;
+            case UpgradeType.Utility: backgroundImage.color = Color.green; break;
+            case UpgradeType.Economy: backgroundImage.color = Color.yellow; break;
         }
-
     }
 
     private void SetupTooltip()
     {
         upgradeName.text = node.upgradeName;
         upgradeDescription.text = node.upgradeDescription;
-        upgradeAmount.text = node.currentUpgradeAmount.ToString() + " / " + node.maxUpgrades;
+        upgradeAmount.text = $"{node.currentUpgradeAmount} / {node.maxUpgrades}";
 
         Vector2[] positions = new Vector2[] { new Vector2(0, -125), new Vector2(-200, -125), new Vector2(200, -125) };
 
+        // Spawns Cost UI once
         if (!costSpawned)
         {
             costSpawned = true;
-            int i = 0;
-            foreach (var item in node.costs)
+            for (int i = 0; i < node.costs.Count; i++)
             {
-                CostData costData = node.costs[i];
-                CreateCostUI(positions[i], costData.resourceIcon, costData.cost);
-                i++;
+                CreateCostUI(positions[i], node.costs[i]);
             }
         }
 
+        // 2. Always update the colors/values when the tooltip opens
+        UpdateAllCostVisuals();
     }
 
-    private void CreateCostUI(Vector2 position, Sprite resourceIcon, float cost)
+    private void CreateCostUI(Vector2 position, CostData costData)
     {
         GameObject obj = Instantiate(costUI);
-        obj.transform.SetParent(transform.Find("tooltip"));
         
+        Transform tooltipContainer = tooltip.transform.Find("tooltip") ?? tooltip.transform;
+        obj.transform.SetParent(tooltipContainer, false);
+
         RectTransform rectTransform = obj.GetComponent<RectTransform>();
         Image resourceImage = obj.GetComponentInChildren<Image>();
         TextMeshProUGUI resourceValue = obj.GetComponentInChildren<TextMeshProUGUI>();
 
         rectTransform.anchoredPosition = position;
-        resourceImage.sprite = resourceIcon;
-        resourceValue.text = cost.ToString();
-        
+        resourceImage.sprite = costData.resourceIcon;
 
+        // Adds resource card to list so it can get updated later
+        spawnedCostTexts.Add(resourceValue);
     }
 
+    private void UpdateAllCostVisuals()
+    {
+        for (int i = 0; i < node.costs.Count; i++)
+        {
+            if (i >= spawnedCostTexts.Count) break;
+
+            CostData costData = node.costs[i];
+            TextMeshProUGUI text = spawnedCostTexts[i];
+
+            text.text = costData.cost.ToString();
+
+            // If player can afford one cost item turn white else red
+            text.color = costData.CanAffordResource() ? Color.white : Color.red;
+        }
+    }
 }

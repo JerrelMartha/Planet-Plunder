@@ -16,6 +16,7 @@ public class Planet : MonoBehaviour
     [SerializeField] private float Layer4Chance = 0.2f; // Gold
     [SerializeField] private float Layer5Chance = 0.1f; // Diamond
 
+    [Range(0f, 80f)]
     public float planetRadius = 10;
 
     private void Start()
@@ -26,14 +27,17 @@ public class Planet : MonoBehaviour
 
     // Destroys previous planet and generates a new one
     [ContextMenu("Random Planet")]
+    [ContextMenu("Random Planet")]
     public void RandomPlanet()
     {
-        
-        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
-        foreach (var item in tiles) Destroy(item);
+        // Destroy only the tiles attached to THIS planet
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         seed = Random.Range(0, 10000);
-        GeneratePlanet(Random.Range(5f, 20f));
+        GeneratePlanet(planetRadius);
     }
 
     public void GeneratePlanet(float radius)
@@ -108,7 +112,9 @@ public class Planet : MonoBehaviour
     // Generates a tile with a resource type and puts it at a location
     private void GenerateTile(ResourceTileSO resourceType, Vector2 location)
     {
-        GameObject generatedTile = Instantiate(baseTile, new Vector3(location.x, location.y, 0), Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(location.x, location.y, 0) + transform.position;
+
+        GameObject generatedTile = Instantiate(baseTile, spawnPosition, Quaternion.identity);
         generatedTile.GetComponent<ResourceTile>().tileStats = resourceType;
         generatedTile.transform.parent = transform;
     }

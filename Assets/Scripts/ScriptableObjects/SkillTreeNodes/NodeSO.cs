@@ -15,6 +15,11 @@ public class CostData
     public Resource resourceType;
     public Sprite resourceIcon;
     public float cost;
+
+    public bool CanAffordResource()
+    {
+        return cost < PlayerResources.instance.GetResourceAmount(resourceType);
+    }
 }
 
 [CreateAssetMenu(fileName = "NewNode", menuName = "Scriptable Objects/NodeSO")]

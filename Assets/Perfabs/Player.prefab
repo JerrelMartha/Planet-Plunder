@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5142225626487193091
 Transform:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectionRange
   range: 1.5
-  updateRangePerFrame: 0
+  updateRangePerFrame: 1
 --- !u!58 &7947242374430961649
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +216,8 @@ GameObject:
   - component: {fileID: 8748935892285874662}
   - component: {fileID: 6121468432588921394}
   - component: {fileID: 3417471554505167173}
-  m_Layer: 0
+  - component: {fileID: 7819903415415300679}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -238,6 +239,7 @@ Transform:
   m_Children:
   - {fileID: 5142225626487193091}
   - {fileID: 4540596914863498369}
+  - {fileID: 5616295422895908429}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2311573735343584956
@@ -527,6 +529,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 201998864332954738}
+        m_TargetAssemblyTypeName: Missile, Assembly-CSharp
+        m_MethodName: TryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d7807a23-bf81-4ba5-8320-aef617e55013
     m_ActionName: 'Player/Fire[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -557,17 +571,21 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a15e2da097e049c4c9aa7c713e01432c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   moveSpeed: 5
   dashForce: 2
   boostMultiplier: 1.5
   dashCooldown: 2
   dashCost: 1
-  maxFuel: 20
+  maxFuel: 1000
   fuelSteal: 0
-  drillRadius: 1
-  drillAttackSpeed: 5
-  drillDamage: 1
+  drillRadius: 2.44
+  drillAttackSpeed: 13.13
+  drillDamage: 7.51
+  missileDamage: 5
+  missileAttackSpeed: 1
+  missileBulletSpeed: 4
+  missileArea: 1.5
   collectionRange: 1.5
 --- !u!114 &3417471554505167173
 MonoBehaviour:
@@ -583,3 +601,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   currentFuel: 0
   maxFuel: 0
+--- !u!114 &7819903415415300679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536204192055280453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087bb89f03324b54f98f567cf2027795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!1 &5999448196054695865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5616295422895908429}
+  - component: {fileID: 201998864332954738}
+  m_Layer: 0
+  m_Name: Missile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5616295422895908429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999448196054695865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.978, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5041261646858974740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &201998864332954738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999448196054695865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d9e91a7e0c21146a264cad6f2e2884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  damage: 0
+  bulletSpeed: 0
+  attackSpeed: 0
+  projectile: {fileID: 5371735688781694534, guid: 2f86a42417669af4cae50ef66e13ce3e, type: 3}
+  firepoint: {fileID: 5616295422895908429}

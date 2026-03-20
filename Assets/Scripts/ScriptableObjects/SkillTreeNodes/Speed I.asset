@@ -17,7 +17,7 @@ MonoBehaviour:
   upgradeIcon: {fileID: 5926881962757455332, guid: 94cf489b4c6856d42ba18981e5a755bd, type: 3}
   upgradeType: 1
   statToUpgrade: 0
-  currentUpgradeAmount: 2
+  currentUpgradeAmount: 5
   maxUpgrades: 5
   upgradeAdd: 0
   prerequisites: []

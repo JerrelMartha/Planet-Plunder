@@ -15,6 +15,10 @@ public enum Stats
     DrillAttackSpeed,
     DrillDamage,
     CollectionRange,
+    MissileDamage,
+    MissileAttackSpeed,
+    MissileBulletSpeed,
+    MissileArea,
 }
 
 public class PlayerStats : MonoBehaviour
@@ -37,6 +41,12 @@ public class PlayerStats : MonoBehaviour
     public float drillRadius = 0.2f;
     public float drillAttackSpeed = 5f;
     public float drillDamage = 1f;
+
+    [Header("Missile")]
+    public float missileDamage = 10f;
+    public float missileAttackSpeed = 0.2f;
+    public float missileBulletSpeed = 5f;
+    public float missileArea = 3f;
 
     [Header("Collection")]
     public float collectionRange = 1.5f;
@@ -120,10 +130,12 @@ public class PlayerStats : MonoBehaviour
         PlayerMovement movement = GetComponent<PlayerMovement>();
         Drill drill = GetComponentInChildren<Drill>();
         CollectionRange range = GetComponentInChildren<CollectionRange>();
+        Missile missile = GetComponentInChildren<Missile>();
 
         fuel.InitializeStats();
         movement.InitializeStats();
         drill.InitializeStats();
         range.InitializeStats();
+        missile.InitializeStats();
     }
 }
