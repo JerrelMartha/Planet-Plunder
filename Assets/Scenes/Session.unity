@@ -3725,11 +3725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileArea
-      value: 100
+      value: 2.62
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileDamage
-      value: 250
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: collectionRange
@@ -3741,7 +3741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileBulletSpeed
-      value: 3
+      value: 7.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,6 +7,7 @@ public class Drill : Weapon
     [SerializeField] private LayerMask resourceLayer;
 
     public bool BuffedDrillActive = false;
+    public bool weaponActive = true;
 
     private void Start()
     {
@@ -16,6 +17,8 @@ public class Drill : Weapon
     {
         base.Update();
         transform.localScale = new Vector3(drillRadius * offset, drillRadius * offset, 1);
+        this.enabled = weaponActive;
+        GetComponent<SpriteRenderer>().enabled = weaponActive;
     }
     public override void Fire()
     {
