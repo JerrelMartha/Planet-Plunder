@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
   m_Name: Speed I
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: MoveSpeed_01
   upgradeName: Speed I
   upgradeDescription: Adds 3  speed.
   upgradeIcon: {fileID: 5926881962757455332, guid: 94cf489b4c6856d42ba18981e5a755bd, type: 3}
   upgradeType: 1
   statToUpgrade: 0
-  currentUpgradeAmount: 5
+  currentUpgradeAmount: 0
   maxUpgrades: 5
   upgradeAdd: 0
   prerequisites: []
@@ -28,4 +29,5 @@ MonoBehaviour:
   - resourceType: 3
     resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
     cost: 1
-  isUnlocked: 1
+  isUnlocked: 0
+  isUnlockedByDefault: 0

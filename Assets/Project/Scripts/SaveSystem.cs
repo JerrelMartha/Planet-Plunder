@@ -2,7 +2,6 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 
-// Save System made with help from. https://youtu.be/1mf730eb5Wo?si=UCyavIuFoHUvgARU
 public static class SaveSystem
 {
     private static string savePath = Application.persistentDataPath + "/playerData.json";
@@ -18,9 +17,16 @@ public static class SaveSystem
     {
         SaveData data = new SaveData();
 
+        // Save Stats
         if (PlayerStats.instance != null)
         {
             PlayerStats.instance.SaveData(ref data.playerStats);
+        }
+
+        // Save Nodes via GameManager
+        if (GameManager.instance != null)
+        {
+            data.nodesData = GameManager.instance.GetNodeSaveData();
         }
 
         string json = JsonUtility.ToJson(data, true);
@@ -35,9 +41,16 @@ public static class SaveSystem
             string json = File.ReadAllText(savePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+            // Load Stats
             if (PlayerStats.instance != null)
             {
                 PlayerStats.instance.LoadData(data.playerStats);
+            }
+
+            // Load Nodes via GameManager
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.ApplyNodeLoadData(data.nodesData);
             }
 
             Debug.Log("Game Loaded Successfully");
@@ -59,8 +72,8 @@ public static class SaveSystem
     [System.Serializable]
     public struct NodeSaveData
     {
-        public string id;       // The unique nodeID from the SO
-        public bool unlocked;   // Is it currently available?
-        public int upgradeCount;       // Current upgrade count
+        public string id;
+        public bool unlocked;
+        public int upgradeCount;
     }
 }

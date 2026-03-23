@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
-  m_Name: Drill Damage I
+  m_Name: Drill Size I
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
-  upgradeName: Drill Damage I
-  upgradeDescription: Increases Drill damage by 0.2.
-  upgradeIcon: {fileID: -6506552428325161499, guid: 8d7c9ad3391a5634799821868753e446, type: 3}
+  nodeID: DrillSize_01
+  upgradeName: Drill Size I
+  upgradeDescription: Increases drill size by 1
+  upgradeIcon: {fileID: -5130294652377279623, guid: 1b534fa39dcccfa418a56f123a0dafdb, type: 3}
   upgradeType: 0
-  statToUpgrade: 0
-  currentUpgradeAmount: 10
-  maxUpgrades: 10
-  upgradeAdd: 0.2
-  prerequisites: []
+  statToUpgrade: 7
+  currentUpgradeAmount: 0
+  maxUpgrades: 5
+  upgradeAdd: 1
+  prerequisites:
+  - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
   costs:
   - resourceType: 0
     resourceIcon: {fileID: -7618021496550400317, guid: cbc2ec93f799df84ea4b95b08cb0dcc7, type: 3}
     cost: 1
-  isUnlocked: 1
+  isUnlocked: 0
+  isUnlockedByDefault: 0
