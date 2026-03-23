@@ -535,6 +535,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &401585618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401585620}
+  - component: {fileID: 401585619}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &401585619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401585618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096d00826dd3e834e8da2f94a998a767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  autosaveOn: 1
+  saveFrequency: 15
+--- !u!4 &401585620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401585618}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 170.9194, y: 37.87568, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &484497658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3281,7 +3327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5382126217512445957, guid: 060c1093ea2f6824483635a445384247, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.635607
+      value: -15.635605
       objectReference: {fileID: 0}
     - target: {fileID: 5382126217512445957, guid: 060c1093ea2f6824483635a445384247, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3297,15 +3343,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5382126217512445957, guid: 060c1093ea2f6824483635a445384247, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5382126217512445957, guid: 060c1093ea2f6824483635a445384247, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5382126217512445957, guid: 060c1093ea2f6824483635a445384247, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5382126217512445957, guid: 060c1093ea2f6824483635a445384247, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3631,6 +3677,10 @@ PrefabInstance:
       propertyPath: maxZoom
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 201998864332954738, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: weaponActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1023100922930526092, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3680,8 +3730,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: maxFuel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: drillDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: drillRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileArea
-      value: 2.62
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileDamage
@@ -3689,15 +3751,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: collectionRange
-      value: 7.6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: drillAttackSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileAttackSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6121468432588921394, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: missileBulletSpeed
-      value: 7.59
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3776,6 +3842,7 @@ SceneRoots:
   - {fileID: 7238799018081522687}
   - {fileID: 130482511}
   - {fileID: 1070641800}
+  - {fileID: 2044030904}
   - {fileID: 73691651}
   - {fileID: 1223338647}
   - {fileID: 764621425}
@@ -3784,4 +3851,4 @@ SceneRoots:
   - {fileID: 515537131}
   - {fileID: 279885583}
   - {fileID: 484497660}
-  - {fileID: 2044030904}
+  - {fileID: 401585620}
