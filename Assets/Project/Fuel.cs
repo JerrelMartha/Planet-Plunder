@@ -78,6 +78,6 @@ public class Fuel : MonoBehaviour
 
     private void OnOutOfFuel()
     {
-        SceneManager.LoadScene("HomeBase");
+        // SceneManager.LoadScene("HomeBase");
     }
 }

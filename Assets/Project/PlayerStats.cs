@@ -1,6 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum Stats 
 { 
@@ -64,20 +65,21 @@ public class PlayerStats : MonoBehaviour
             Destroy(gameObject);
         }
 
-        LoadData();
     }
 
-    public void LoadData()
+    void Update()
     {
-        moveSpeed = PlayerPrefs.GetFloat("moveSpeed", 5f);
-        dashForce = PlayerPrefs.GetFloat("dashForce", 2f);
+        if (Keyboard.current.lKey.wasPressedThisFrame)
+        {
+            Debug.Log("Manual Load Triggered via New Input System...");
+            SaveSystem.LoadGame();
+
+            // Log the value immediately to see if it changed
+            Debug.Log($"Current moveSpeed: {moveSpeed}");
+        }
     }
 
-    public void SaveData()
-    {
-        PlayerPrefs.SetFloat("moveSpeed", moveSpeed);
-        PlayerPrefs.SetFloat("dashForce", dashForce);
-    }
+
 
     public void IncreaseStat(Stats stats, float amount)
     {
@@ -116,12 +118,24 @@ public class PlayerStats : MonoBehaviour
             case Stats.CollectionRange:
                 collectionRange += amount;
                 break;
+            case Stats.MissileDamage:
+                missileDamage += amount;
+                break;
+            case Stats.MissileAttackSpeed:
+                missileAttackSpeed += amount;
+                break;
+            case Stats.MissileBulletSpeed:
+                missileBulletSpeed += amount;
+                break;
+            case Stats.MissileArea:
+                missileArea += amount;
+                break;
             default:
                 Debug.LogWarning("Stat does not exist");
                 break;
         }
 
-        
+        SaveSystem.SaveGame();
     }
 
     public void InitializeAllStats()
@@ -137,5 +151,57 @@ public class PlayerStats : MonoBehaviour
         drill.InitializeStats();
         range.InitializeStats();
         missile.InitializeStats();
+    }
+
+    
+
+    public void SaveData(ref StatSaveData data)
+    {
+        data.moveSpeed = moveSpeed;
+        data.dashForce = dashForce;
+        data.boostMult = boostMultiplier;
+        data.dashCooldown = dashCooldown;
+        data.dashCost = dashCost;
+        data.maxFuel = maxFuel;
+        data.fuelSteal = fuelSteal;
+        data.drillRadius = drillRadius;
+        data.drillAttackSpeed = drillAttackSpeed;
+        data.drillDamage = drillDamage;
+        data.missileDamage = missileDamage;
+        data.missileAttackSpeed = missileAttackSpeed;
+        data.missileBulletSpeed = missileBulletSpeed;
+        data.missileArea = missileArea;
+        data.collectionRange = collectionRange;
+    }
+
+    public void LoadData(StatSaveData data)
+    {
+        this.moveSpeed = data.moveSpeed;
+        this.dashForce = data.dashForce;
+        this.boostMultiplier = data.boostMult;
+        this.dashCooldown = data.dashCooldown;
+        this.dashCost = data.dashCost;
+        this.maxFuel = data.maxFuel;
+        this.fuelSteal = data.fuelSteal;
+        this.drillRadius = data.drillRadius;
+        this.drillAttackSpeed = data.drillAttackSpeed;
+        this.drillDamage = data.drillDamage;
+        this.missileDamage = data.missileDamage;
+        this.missileAttackSpeed = data.missileAttackSpeed;
+        this.missileBulletSpeed = data.missileBulletSpeed;
+        this.missileArea = data.missileArea;
+        this.collectionRange = data.collectionRange;
+
+        InitializeAllStats();
+    }
+
+    [System.Serializable]
+    public struct StatSaveData
+    {
+        public float moveSpeed, dashForce, boostMult, dashCooldown, dashCost;
+        public float maxFuel, fuelSteal;
+        public float drillRadius, drillAttackSpeed, drillDamage;
+        public float missileDamage, missileAttackSpeed, missileBulletSpeed, missileArea;
+        public float collectionRange;
     }
 }

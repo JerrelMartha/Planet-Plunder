@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public enum UpgradeType
@@ -25,6 +26,7 @@ public class CostData
 [CreateAssetMenu(fileName = "NewNode", menuName = "Scriptable Objects/NodeSO")]
 public class NodeSO : ScriptableObject
 {
+    public string nodeID;
     [Header("UI Info")]
     public string upgradeName;
     [TextArea] public string upgradeDescription;
@@ -41,4 +43,11 @@ public class NodeSO : ScriptableObject
     public List<NodeSO> prerequisites;
     public List<CostData> costs;
     public bool isUnlocked;
+    public bool isUnlockedByDefault;
+
+    public void Reset()
+    {
+        currentUpgradeAmount = 0;
+        isUnlocked = isUnlockedByDefault;
+    }
 }
