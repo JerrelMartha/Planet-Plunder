@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
+[ExecuteAlways]
 public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private NodeSO node;
@@ -34,6 +35,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         imageComponent.sprite = node.upgradeIcon;
         UpgradeTypeColorChange(node.upgradeType);
+        transform.parent.name = node.upgradeName;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -49,11 +51,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Update()
     {
-        if (HasPrerequisites())
-        {
-            Unlock();
-        }
-
+        CheckNodeState();
     }
 
     public bool CanAfford()
@@ -72,13 +70,18 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         foreach (var prereq in node.prerequisites)
         {
-            if (!prereq.isUnlocked) return false;
+            // Change from .isUnlocked to .isPurchased 
+            // to ensure the player actually BOUGHT the previous tier.
+            if (!prereq.isPurchased) return false;
         }
         return true;
     }
 
     public bool IsUnlocked() => node.isUnlocked;
-    public void Unlock() => node.isUnlocked = true;
+    public void Unlock()
+    {
+        node.isUnlocked = true;
+    }
 
     public void Buy()
     {
@@ -87,18 +90,26 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         foreach (var costData in node.costs)
         {
             PlayerResources.instance.AddResource(costData.resourceType, -costData.cost);
-            PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
-
-            if (node.currentUpgradeAmount < node.maxUpgrades)
-            {
-                node.currentUpgradeAmount++;
-            }
         }
 
-        PlayerStats.instance.InitializeAllStats();
-        SetupTooltip();
-    }
+        node.isPurchased = true;
+        node.isUnlocked = true;
+        PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
 
+        if (node.currentUpgradeAmount < node.maxUpgrades)
+        {
+            node.currentUpgradeAmount++;
+        }
+
+        if (IsMaxedOut())
+        {
+            node.isMaxedOut = true;
+        }
+
+        SetupTooltip();
+        CheckVisible();
+        PlayerStats.instance.InitializeAllStats();
+    }
     public bool IsMaxedOut() => node.currentUpgradeAmount >= node.maxUpgrades;
 
     public bool CanBuy()
@@ -170,6 +181,68 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
             // If player can afford one cost item turn white else red
             text.color = costData.CanAffordResource() ? Color.white : Color.red;
+        }
+    }
+
+    private void CheckNodeState()
+    {
+        if (HasPrerequisites())
+        {
+            Unlock();
+        }
+
+        CheckVisible();
+    }
+
+    private void CheckVisible()
+    {
+        // If there are no prerequisites, it should always be visible
+        if (node.prerequisites == null || node.prerequisites.Count == 0)
+        {
+            SetNodeVisibility(true);
+            return;
+        }
+
+        // Check if ALL prerequisites are purchased
+        bool allPurchased = true;
+        foreach (var prereq in node.prerequisites)
+        {
+            // Assuming your NodeSO has a 'isPurchased' or similar bool
+            if (!prereq.isPurchased)
+            {
+                allPurchased = false;
+                break;
+            }
+        }
+
+        SetNodeVisibility(allPurchased);
+
+        // Apply a "Locked" visual style if it's visible but not yet purchased
+        if (allPurchased && !node.isPurchased)
+        {
+            imageComponent.color = Color.gray;
+        }
+        else if (node.isPurchased)
+        {
+            imageComponent.color = Color.white;
+        }
+    }
+
+    private void SetNodeVisibility(bool visible)
+    {
+        // Option A: Use a CanvasGroup (Best for performance/animations)
+        // You'll need: private CanvasGroup canvasGroup; in Awake()
+        if (TryGetComponent<CanvasGroup>(out CanvasGroup group))
+        {
+            group.alpha = visible ? 1 : 0;
+            group.interactable = visible;
+            group.blocksRaycasts = visible;
+        }
+        else
+        {
+            // Option B: Simple Toggle (The background and icon)
+            imageComponent.enabled = visible;
+            if (backgroundImage != null) backgroundImage.enabled = visible;
         }
     }
 }

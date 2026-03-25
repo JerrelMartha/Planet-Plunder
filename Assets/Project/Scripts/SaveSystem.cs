@@ -11,27 +11,25 @@ public static class SaveSystem
     {
         public PlayerStats.StatSaveData playerStats;
         public List<NodeSaveData> nodesData;
+        public List<PlayerResources.ResourceSaveData> resourcesData;
     }
 
     public static void SaveGame()
     {
         SaveData data = new SaveData();
 
-        // Save Stats
-        if (PlayerStats.instance != null)
-        {
-            PlayerStats.instance.SaveData(ref data.playerStats);
-        }
+        // Existing Save Logic
+        if (PlayerStats.instance != null) PlayerStats.instance.SaveData(ref data.playerStats);
+        if (GameManager.instance != null) data.nodesData = GameManager.instance.GetNodeSaveData();
 
-        // Save Nodes via GameManager
-        if (GameManager.instance != null)
+        // NEW: Save Resources
+        if (PlayerResources.instance != null)
         {
-            data.nodesData = GameManager.instance.GetNodeSaveData();
+            data.resourcesData = PlayerResources.instance.GetSaveData();
         }
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
-        Debug.Log($"Game Saved to: {savePath}");
     }
 
     public static void LoadGame()
@@ -41,23 +39,15 @@ public static class SaveSystem
             string json = File.ReadAllText(savePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            // Load Stats
-            if (PlayerStats.instance != null)
-            {
-                PlayerStats.instance.LoadData(data.playerStats);
-            }
+            // Existing Load Logic
+            if (PlayerStats.instance != null) PlayerStats.instance.LoadData(data.playerStats);
+            if (GameManager.instance != null) GameManager.instance.ApplyNodeLoadData(data.nodesData);
 
-            // Load Nodes via GameManager
-            if (GameManager.instance != null)
+            // NEW: Load Resources
+            if (PlayerResources.instance != null)
             {
-                GameManager.instance.ApplyNodeLoadData(data.nodesData);
+                PlayerResources.instance.LoadData(data.resourcesData);
             }
-
-            Debug.Log("Game Loaded Successfully");
-        }
-        else
-        {
-            Debug.LogWarning("Save file not found.");
         }
     }
 
@@ -75,5 +65,8 @@ public static class SaveSystem
         public string id;
         public bool unlocked;
         public int upgradeCount;
+        public bool isVisible;
+        public bool isPurchased;
+        public bool isMaxedOut;
     }
 }

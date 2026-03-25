@@ -5,10 +5,6 @@ public class PlayerAim : MonoBehaviour
 {
     private Camera _mainCamera;
 
-    void Awake()
-    {
-        _mainCamera = Camera.main;
-    }
 
     void Update()
     {
@@ -17,6 +13,10 @@ public class PlayerAim : MonoBehaviour
 
     private void AimAtMouse()
     {
+        if (_mainCamera == null)
+        {
+            _mainCamera = Camera.main;
+        }
         // 1. Get the mouse position in screen space
         Vector2 mousePosition = Mouse.current.position.ReadValue();
 

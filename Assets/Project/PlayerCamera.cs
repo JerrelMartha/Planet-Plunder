@@ -24,9 +24,12 @@ public class PlayerCamera : MonoBehaviour
 
     private Coroutine coroutine = null;
 
-    private void Start()
+    private void Awake()
     {
         mainCamera = Camera.main.gameObject;
+    }
+    private void Start()
+    {
         target = gameObject;
     }
     private void Update()

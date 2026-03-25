@@ -7,4 +7,9 @@ public class HomeBaseUI : MonoBehaviour
     {
         SceneManager.LoadScene("Session");
     }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("Title");
+    }
 }

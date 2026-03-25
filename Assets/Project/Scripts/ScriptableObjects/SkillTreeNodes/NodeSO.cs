@@ -44,10 +44,17 @@ public class NodeSO : ScriptableObject
     public List<CostData> costs;
     public bool isUnlocked;
     public bool isUnlockedByDefault;
+    public bool isVisible;
+    public bool isPurchased;
+    public bool isMaxedOut;
 
     public void Reset()
     {
         currentUpgradeAmount = 0;
         isUnlocked = isUnlockedByDefault;
+        isVisible = false;
+        isPurchased = false;
+        isMaxedOut = false;
     }
+
 }

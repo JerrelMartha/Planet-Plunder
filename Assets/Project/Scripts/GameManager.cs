@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using static SaveSystem;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         AutoSave();
 
-        if (Keyboard.current.sKey.wasPressedThisFrame) Save();
+        if (Keyboard.current.pKey.wasPressedThisFrame) Save();
         if (Keyboard.current.qKey.wasPressedThisFrame) DeleteSave();
     }
 
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         SaveSystem.SaveGame();
+        Debug.Log("Saved Game");
     }
 
     public void LoadGame()
@@ -72,40 +75,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- Data Bridge for SaveSystem ---
 
-    public List<SaveSystem.NodeSaveData> GetNodeSaveData()
+    public List<NodeSaveData> GetNodeSaveData()
     {
-        List<SaveSystem.NodeSaveData> dataList = new List<SaveSystem.NodeSaveData>();
-        if (allNodes == null) return dataList;
+        if (allNodes == null) return new List<NodeSaveData>();
 
-        foreach (var node in allNodes)
+        return allNodes.Select(node => new NodeSaveData
         {
-            dataList.Add(new SaveSystem.NodeSaveData
-            {
-                id = node.nodeID,
-                unlocked = node.isUnlocked,
-                upgradeCount = node.currentUpgradeAmount
-            });
-        }
-        return dataList;
+            id = node.nodeID,
+            unlocked = node.isUnlocked,
+            upgradeCount = node.currentUpgradeAmount,
+            isVisible = node.isVisible,
+            isPurchased = node.isPurchased,
+            isMaxedOut = node.isMaxedOut,
+        }).ToList();
     }
 
-    public void ApplyNodeLoadData(List<SaveSystem.NodeSaveData> savedData)
+    public void ApplyNodeLoadData(List<NodeSaveData> savedData)
     {
         if (savedData == null || allNodes == null) return;
 
+        var nodeLookup = allNodes.ToDictionary(n => n.nodeID, n => n);
+
         foreach (var data in savedData)
         {
-            // Find the asset that matches the ID in the save file
-            foreach (var node in allNodes)
+            if (nodeLookup.TryGetValue(data.id, out var node))
             {
-                if (node.nodeID == data.id)
-                {
-                    node.isUnlocked = data.unlocked;
-                    node.currentUpgradeAmount = data.upgradeCount;
-                    break;
-                }
+                node.isUnlocked = data.unlocked;
+                node.currentUpgradeAmount = data.upgradeCount;
+                node.isVisible = data.isVisible;
+                node.isPurchased = data.isPurchased;
+                node.isMaxedOut = data.isMaxedOut;
             }
         }
     }

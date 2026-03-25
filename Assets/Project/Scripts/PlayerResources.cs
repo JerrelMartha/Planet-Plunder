@@ -85,5 +85,36 @@ public class PlayerResources : MonoBehaviour
         }
     }
 
+    [System.Serializable]
+    public struct ResourceSaveData
+    {
+        public Resource type;
+        public float amount;
+    }
+
+    // Add these methods to PlayerResources
+    public List<ResourceSaveData> GetSaveData()
+    {
+        List<ResourceSaveData> data = new List<ResourceSaveData>();
+        foreach (var kvp in resourceInventory)
+        {
+            data.Add(new ResourceSaveData { type = kvp.Key, amount = kvp.Value });
+        }
+        return data;
+    }
+
+    public void LoadData(List<ResourceSaveData> savedData)
+    {
+        if (savedData == null) return;
+
+        resourceInventory.Clear();
+        foreach (var item in savedData)
+        {
+            resourceInventory[item.type] = item.amount;
+        }
+    }
+
+
+
 
 }

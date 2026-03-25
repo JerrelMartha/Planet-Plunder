@@ -78,6 +78,11 @@ public class Fuel : MonoBehaviour
 
     private void OnOutOfFuel()
     {
-        // SceneManager.LoadScene("HomeBase");
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Session")
+        {
+            SceneManager.LoadScene("HomeBase");
+        }
+
     }
 }
