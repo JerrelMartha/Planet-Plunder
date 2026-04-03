@@ -17,7 +17,6 @@ public class Fuel : MonoBehaviour
         {
             instance = this;
             playerMovement = GetComponent<PlayerMovement>();
-            DontDestroyOnLoad(gameObject);
         } else
         {
             Destroy(gameObject);

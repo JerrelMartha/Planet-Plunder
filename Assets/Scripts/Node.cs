@@ -19,9 +19,27 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private GameObject costUI;
 
     private bool costSpawned = false;
-
-    // Keeps track of all cost ui spawned
     private List<TextMeshProUGUI> spawnedCostTexts = new List<TextMeshProUGUI>();
+
+
+    private void OnValidate()
+    {
+
+#if UNITY_EDITOR
+        UnityEditor.Undo.RecordObject(transform.parent.gameObject, "Rename Node Parent");
+#endif
+        transform.parent.name = node.upgradeName;
+
+        upgradeName.text = node.upgradeName;
+        upgradeDescription.text = node.upgradeDescription;
+        upgradeAmount.text = $"{node.currentUpgradeAmount} / {node.maxUpgrades}";
+
+        imageComponent = GetComponent<Image>();
+        backgroundImage = transform.parent.GetComponent<Image>();
+
+        imageComponent.sprite = node.upgradeIcon;
+        UpgradeTypeColorChange(node.upgradeType);
+    }
 
     private void Awake()
     {
@@ -53,7 +71,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             Unlock();
         }
-
     }
 
     public bool CanAfford()
@@ -125,8 +142,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         Vector2[] positions = new Vector2[] { new Vector2(0, -125), new Vector2(-200, -125), new Vector2(200, -125) };
 
-        // Spawns Cost UI once
-        if (!costSpawned)
+        if (!costSpawned && Application.isPlaying) // Only spawn objects while the game is running
         {
             costSpawned = true;
             for (int i = 0; i < node.costs.Count; i++)
@@ -135,14 +151,13 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
         }
 
-        // 2. Always update the colors/values when the tooltip opens
         UpdateAllCostVisuals();
     }
 
     private void CreateCostUI(Vector2 position, CostData costData)
     {
         GameObject obj = Instantiate(costUI);
-        
+
         Transform tooltipContainer = tooltip.transform.Find("tooltip") ?? tooltip.transform;
         obj.transform.SetParent(tooltipContainer, false);
 
@@ -153,12 +168,14 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         rectTransform.anchoredPosition = position;
         resourceImage.sprite = costData.resourceIcon;
 
-        // Adds resource card to list so it can get updated later
         spawnedCostTexts.Add(resourceValue);
     }
 
     private void UpdateAllCostVisuals()
     {
+        // Only attempt this if the game is running and costs are spawned
+        if (!Application.isPlaying) return;
+
         for (int i = 0; i < node.costs.Count; i++)
         {
             if (i >= spawnedCostTexts.Count) break;
@@ -167,8 +184,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             TextMeshProUGUI text = spawnedCostTexts[i];
 
             text.text = costData.cost.ToString();
-
-            // If player can afford one cost item turn white else red
             text.color = costData.CanAffordResource() ? Color.white : Color.red;
         }
     }

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5142225626487193091
 Transform:
   m_ObjectHideFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   BuffedDrillActive: 0
+  weaponActive: 1
 --- !u!1 &1929123424378384497
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,9 +215,7 @@ GameObject:
   - component: {fileID: 122725063181961206}
   - component: {fileID: 9169932326760240964}
   - component: {fileID: 8748935892285874662}
-  - component: {fileID: 6121468432588921394}
   - component: {fileID: 3417471554505167173}
-  - component: {fileID: 7819903415415300679}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -400,7 +399,7 @@ MonoBehaviour:
   zoomEasing: 4
   zoomStrength: 0.5
   minZoom: 3
-  maxZoom: 20
+  maxZoom: 50
   playerMovement: {fileID: 3663639577674694060}
 --- !u!114 &9169932326760240964
 MonoBehaviour:
@@ -560,33 +559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069f9cd3f5db4e548a68ad9249d4da45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &6121468432588921394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2536204192055280453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15e2da097e049c4c9aa7c713e01432c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  moveSpeed: 5
-  dashForce: 2
-  boostMultiplier: 1.5
-  dashCooldown: 2
-  dashCost: 1
-  maxFuel: 1000
-  fuelSteal: 0
-  drillRadius: 2.44
-  drillAttackSpeed: 13.13
-  drillDamage: 7.51
-  missileDamage: 5
-  missileAttackSpeed: 1
-  missileBulletSpeed: 4
-  missileArea: 1.5
-  collectionRange: 1.5
 --- !u!114 &3417471554505167173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,18 +573,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   currentFuel: 0
   maxFuel: 0
---- !u!114 &7819903415415300679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2536204192055280453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 087bb89f03324b54f98f567cf2027795, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &5999448196054695865
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,3 +622,4 @@ MonoBehaviour:
   attackSpeed: 0
   projectile: {fileID: 5371735688781694534, guid: 2f86a42417669af4cae50ef66e13ce3e, type: 3}
   firepoint: {fileID: 5616295422895908429}
+  weaponActive: 1
