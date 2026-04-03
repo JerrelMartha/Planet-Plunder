@@ -5,11 +5,13 @@ using UnityEngine.InputSystem;
 
 public enum Resource 
 { 
-    dirt,
-    stone,
-    iron,
-    gold,
-    diamond,
+    Dirt,
+    Stone,
+    Iron,
+    Gold,
+    Diamond,
+    Bolt,
+    MetalPlate,
 }
 
 
