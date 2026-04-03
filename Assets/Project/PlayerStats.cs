@@ -137,22 +137,6 @@ public class PlayerStats : MonoBehaviour
 
         SaveSystem.SaveGame();
     }
-
-    public void InitializeAllStats()
-    {
-        Fuel fuel = GetComponent<Fuel>();
-        PlayerMovement movement = GetComponent<PlayerMovement>();
-        Drill drill = GetComponentInChildren<Drill>();
-        CollectionRange range = GetComponentInChildren<CollectionRange>();
-        Missile missile = GetComponentInChildren<Missile>();
-
-        fuel.InitializeStats();
-        movement.InitializeStats();
-        drill.InitializeStats();
-        range.InitializeStats();
-        missile.InitializeStats();
-    }
-
     
 
     public void SaveData(ref StatSaveData data)
@@ -191,8 +175,6 @@ public class PlayerStats : MonoBehaviour
         this.missileBulletSpeed = data.missileBulletSpeed;
         this.missileArea = data.missileArea;
         this.collectionRange = data.collectionRange;
-
-        InitializeAllStats();
     }
 
     [System.Serializable]

@@ -112,7 +112,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
         }
 
-        PlayerStats.instance.InitializeAllStats();
         SetupTooltip();
     }
 
