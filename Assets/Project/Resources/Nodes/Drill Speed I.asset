@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Drill Speed I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: DrillSpeed_01
+  upgradeName: Drill Speed I
+  upgradeDescription: Upgrades Drill Attack Speed by 1.
+  upgradeIcon: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
+  upgradeType: 0
+  statToUpgrade: 8
+  currentUpgradeAmount: 5
+  maxUpgrades: 5
+  upgradeAdd: 5
+  prerequisites:
+  - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
+  costs:
+  - resourceType: 0
+    resourceIcon: {fileID: -7618021496550400317, guid: cbc2ec93f799df84ea4b95b08cb0dcc7, type: 3}
+    cost: 5
+  isUnlocked: 1
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 1
+  isMaxedOut: 1

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Speed I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: MoveSpeed_01
+  upgradeName: Speed I
+  upgradeDescription: Adds 1 speed.
+  upgradeIcon: {fileID: 5926881962757455332, guid: 94cf489b4c6856d42ba18981e5a755bd, type: 3}
+  upgradeType: 1
+  statToUpgrade: 0
+  currentUpgradeAmount: 5
+  maxUpgrades: 5
+  upgradeAdd: 1
+  prerequisites:
+  - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
+  costs:
+  - resourceType: 2
+    resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
+    cost: 5
+  isUnlocked: 1
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 1
+  isMaxedOut: 1
