@@ -1900,7 +1900,7 @@ MonoBehaviour:
   drillAttackSpeed: 5
   drillDamage: 1
   missileDamage: 10
-  missileAttackSpeed: 0.3
+  missileAttackSpeed: 4.1
   missileBulletSpeed: 4
   missileArea: 0.5
   collectionRange: 1.5
