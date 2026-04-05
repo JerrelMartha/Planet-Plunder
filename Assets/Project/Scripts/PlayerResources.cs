@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,13 +71,18 @@ public class PlayerResources : MonoBehaviour
 
     public void ResetTemporaryInventory()
     {
-        temporaryInventory = null;
+        temporaryInventory.Clear();
     }
 
     public float GetResourceAmount(Resource type)
     {
         // If resource in not yet in the Dictionary, returns 0 (because you don't have that resource yet)
         return resourceInventory.GetValueOrDefault(type, 0f);
+    }
+
+    public Dictionary<Resource, float> GetTemporaryInventory()
+    {
+        return temporaryInventory;
     }
 
     [ContextMenu("Log Resources")]

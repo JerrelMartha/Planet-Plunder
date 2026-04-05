@@ -1,8 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using static SaveSystem;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -108,5 +109,31 @@ public class GameManager : MonoBehaviour
                 node.isMaxedOut = data.isMaxedOut;
             }
         }
+    }
+
+    private void BeforeNavigate()
+    {
+        Time.timeScale = 1f;
+        PlayerResources.instance.ResetTemporaryInventory();
+    }
+    public void NavigateToUpgrade()
+    {
+        BeforeNavigate();
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene("HomeBase");
+    }
+
+    public void NavigateToExplore()
+    {
+        BeforeNavigate();
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene("Explore");
+    }
+
+    public void NavigateToTitle()
+    {
+        BeforeNavigate();
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene("Title");
     }
 }

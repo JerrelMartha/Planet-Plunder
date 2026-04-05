@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private float attackSpeed = 1.5f; // Time between shots
+    [SerializeField] private Transform firePoint;
+
+    private float lastAttackTime;
+
     protected override void HandleMovement()
     {
         float distance = Vector3.Distance(transform.position, player.position);
@@ -12,18 +18,29 @@ public class RangedEnemy : Enemy
         }
         else
         {
-            // Stop moving and start shooting
             currentState = EnemyStates.Attacking;
         }
     }
 
     protected override void HandleAttack()
     {
-        // Shooting logic here
-        Debug.Log("Firing at player from a distance!");
+        if (Time.time >= lastAttackTime + attackSpeed)
+        {
+            Shoot();
+            lastAttackTime = Time.time;
+        }
 
-        // If the player gets too close or too far, return to Moving
-        if (Vector3.Distance(transform.position, player.position) != stopDistance)
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > stopDistance)
+        {
             currentState = EnemyStates.Moving;
+        }
+    }
+
+    private void Shoot()
+    {
+        Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
+        GameObject obj = Instantiate(projectile, spawnPos, Quaternion.identity);
+        Destroy(obj, 2f);
     }
 }

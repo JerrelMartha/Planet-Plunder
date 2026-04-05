@@ -109,6 +109,7 @@ MonoBehaviour:
   attackSpeed: 5
   projectile: {fileID: 0}
   firepoint: {fileID: 5142225626487193091}
+  drillEnemyDamage: 0.5
   drillRadius: 0.2
   offset: 5
   resourceLayer:
@@ -161,7 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c457c242cd7e78c4a915637e76255a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectionRange
-  range: 1.5
+  range: 3
+  pullStrength: 5
+  resourceLayer: 3
   updateRangePerFrame: 1
 --- !u!58 &7947242374430961649
 CircleCollider2D:
@@ -216,6 +219,7 @@ GameObject:
   - component: {fileID: 9169932326760240964}
   - component: {fileID: 8748935892285874662}
   - component: {fileID: 3417471554505167173}
+  - component: {fileID: 7618916455409652010}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -377,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
   boostMultiplier: 1.5
-  dashForce: 2
+  dashForce: 1.1
   dashCooldown: 2
   dashCost: 1
 --- !u!114 &122725063181961206
@@ -571,8 +575,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e9d7fbd30d1e347af6d7852c7c69e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  currentFuel: 0
-  maxFuel: 0
+  currentFuel: 20
+  maxFuel: 20
+  endScreen: {fileID: 8980881637693958434, guid: 377eeda164d37f647b5c1da5fbb6858c, type: 3}
+--- !u!114 &7618916455409652010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536204192055280453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9889563d050f5cd459c94926aaab3773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &5999448196054695865
 GameObject:
   m_ObjectHideFlags: 0

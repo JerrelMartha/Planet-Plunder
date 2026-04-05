@@ -6,10 +6,13 @@ public abstract class Enemy : MonoBehaviour
     protected float maxHealth;
     [SerializeField] protected float speed;
     [SerializeField] protected float stopDistance;
+    [SerializeField] protected float aggroRange = 3f;
+    [SerializeField] protected float patrolSpeed = 0.1f;
 
     [SerializeField] protected GameObject droppedResource;
 
     protected Transform player;
+    protected Vector3 startPosition;
 
     protected enum EnemyStates { Patrol, Moving, Attacking }
     protected EnemyStates currentState;
@@ -17,41 +20,35 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        currentState = EnemyStates.Moving;
+        startPosition = transform.position;
+        currentState = EnemyStates.Patrol;
         maxHealth = health;
     }
 
-    public void Heal(float amount)
+    protected virtual void HandlePatrol()
     {
-        health += amount;
-
-        if (health >  maxHealth)
-        {
-            health = maxHealth;
-        }
-    }
-
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-
-    protected void Die()
-    {
-        DropLoot();
-        Destroy(gameObject);
+        float patrolRange = 5f;
+        float pingPong = Mathf.PingPong(Time.time * patrolSpeed, patrolRange) - (patrolRange / 2f);
+        transform.position = startPosition + new Vector3(pingPong, 0, 0);
     }
 
     protected virtual void Update()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (currentState != EnemyStates.Attacking)
+        {
+            if (distanceToPlayer <= aggroRange)
+                currentState = EnemyStates.Moving;
+            else
+                currentState = EnemyStates.Patrol;
+        }
+
         switch (currentState)
         {
+            case EnemyStates.Patrol:
+                HandlePatrol();
+                break;
             case EnemyStates.Moving:
                 HandleMovement();
                 break;
@@ -61,9 +58,26 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    // This is what we will override in child classes
     protected abstract void HandleMovement();
     protected abstract void HandleAttack();
+
+    public void Heal(float amount)
+    {
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        if (health <= 0) Die();
+    }
+
+    protected void Die()
+    {
+        DropLoot();
+        Destroy(gameObject);
+    }
 
     protected void DropLoot()
     {

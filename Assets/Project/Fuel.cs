@@ -8,6 +8,9 @@ public class Fuel : MonoBehaviour
 
     [SerializeField] private float currentFuel;
     [SerializeField] private float maxFuel;
+    [SerializeField] private GameObject endScreen;
+
+    private bool isGameOver = false;
 
     private PlayerMovement playerMovement;
 
@@ -17,7 +20,8 @@ public class Fuel : MonoBehaviour
         {
             instance = this;
             playerMovement = GetComponent<PlayerMovement>();
-        } else
+        }
+        else
         {
             Destroy(gameObject);
         }
@@ -37,26 +41,45 @@ public class Fuel : MonoBehaviour
     {
         if (playerMovement.IsBoosting())
         {
-            currentFuel -= 1.5f * Time.deltaTime;
-        } else
-        {
-            currentFuel -= 1 * Time.deltaTime;
+            RemoveFuel(1.5f * Time.deltaTime);
         }
-
-        if (currentFuel < 0)
+        else
         {
-            OnOutOfFuel();
-        }
+            RemoveFuel(1.5f * Time.deltaTime);
+        }      
     }
 
     public void RemoveFuel(float amount)
     {
+        // Prevent fuel removal if the game is already over
+        if (isGameOver) return;
+
         currentFuel -= amount;
+
+        if (currentFuel <= 0)
+        {
+            currentFuel = 0; // Clamp to 0
+            OnOutOfFuel();
+        }
+    }
+
+    private void OnOutOfFuel()
+    {
+        if (isGameOver) return;
+
+        isGameOver = true;
+        Time.timeScale = 0f;
+        Instantiate(endScreen);
     }
 
     public void AddFuel(float amount)
     {
         currentFuel += amount;
+
+        if (currentFuel > maxFuel)
+        {
+            currentFuel = maxFuel;
+        }
     }
 
     public float GetFuelNormalized()
@@ -75,13 +98,5 @@ public class Fuel : MonoBehaviour
         currentFuel = maxFuel;
     }
 
-    private void OnOutOfFuel()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "Session")
-        {
-            SceneManager.LoadScene("HomeBase");
-        }
 
-    }
 }
