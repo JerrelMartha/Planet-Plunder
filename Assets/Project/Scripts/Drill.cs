@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Drill : Weapon
 {
+    [SerializeField] private float drillEnemyDamage = 0.5f;
     [SerializeField] private float drillRadius = 1f;
     [SerializeField] private float offset = 5f;
     [SerializeField] private LayerMask resourceLayer;
@@ -56,6 +57,7 @@ public class Drill : Weapon
         drillRadius = PlayerStats.instance.drillRadius;
         damage = PlayerStats.instance.drillDamage;
         attackSpeed = PlayerStats.instance.drillAttackSpeed;
+        drillEnemyDamage = PlayerStats.instance.drillEnemyDamage;
     }
 }
 

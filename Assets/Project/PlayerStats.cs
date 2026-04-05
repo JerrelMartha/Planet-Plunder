@@ -20,6 +20,8 @@ public enum Stats
     MissileAttackSpeed,
     MissileBulletSpeed,
     MissileArea,
+    MissileEnemyDamage,
+    DrillEnemyDamage,
 }
 
 public class PlayerStats : MonoBehaviour
@@ -42,12 +44,14 @@ public class PlayerStats : MonoBehaviour
     public float drillRadius = 0.2f;
     public float drillAttackSpeed = 5f;
     public float drillDamage = 1f;
+    public float drillEnemyDamage = 0.5f;
 
     [Header("Missile")]
     public float missileDamage = 10f;
     public float missileAttackSpeed = 0.2f;
     public float missileBulletSpeed = 5f;
     public float missileArea = 3f;
+    public float missileEnemyDamage = 20f;
 
     [Header("Collection")]
     public float collectionRange = 1.5f;
@@ -129,6 +133,12 @@ public class PlayerStats : MonoBehaviour
                 break;
             case Stats.MissileArea:
                 missileArea += amount;
+                break;
+            case Stats.DrillEnemyDamage:
+                drillEnemyDamage += amount;
+                break;
+            case Stats.MissileEnemyDamage:
+                missileEnemyDamage += amount;
                 break;
             default:
                 Debug.LogWarning("Stat does not exist");
