@@ -39,6 +39,10 @@ public class MissileProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == 9) // Enemy Layer
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(missileDamage); 
+        }
         Die();
     }
 

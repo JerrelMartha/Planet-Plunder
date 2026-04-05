@@ -22,15 +22,23 @@ public class Drill : Weapon
     }
     public override void Fire()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(firepoint.position, drillRadius, resourceLayer);
+        int combinedLayerMask = resourceLayer | (1 << 9);
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(firepoint.position, drillRadius, combinedLayerMask);
 
         foreach (Collider2D col in hitColliders)
         {
-            ResourceTile resource = col.GetComponent<ResourceTile>();
 
+            ResourceTile resource = col.GetComponent<ResourceTile>();
             if (resource != null)
             {
                 resource.TakeDamage(damage);
+            }
+
+            Enemy enemy = col.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
             }
         }
     }

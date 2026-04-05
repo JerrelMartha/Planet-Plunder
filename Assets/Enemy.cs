@@ -41,6 +41,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+
     protected void Die()
     {
         DropLoot();
@@ -66,6 +67,6 @@ public abstract class Enemy : MonoBehaviour
 
     protected void DropLoot()
     {
-
+        Instantiate(droppedResource, transform.position, Quaternion.identity);
     }
 }
