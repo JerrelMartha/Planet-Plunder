@@ -3,14 +3,14 @@ using UnityEngine;
 public class CollectionRange : MonoBehaviour
 {
     [SerializeField] private float range = 1.5f;
-    private LayerMask resourceLayer = 3;
-
+    [SerializeField] private float pullStrength = 10f;
+    [SerializeField] private int resourceLayer = 3;
     [SerializeField] private bool updateRangePerFrame = false;
 
     private void Start()
     {
-        UpdateRange();
         InitializeStats();
+        UpdateRange();
     }
 
     private void Update()
@@ -20,17 +20,20 @@ public class CollectionRange : MonoBehaviour
             UpdateRange();
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer == resourceLayer)
         {
-            collision.gameObject.GetComponent<DroppedResource>().Collect();
+            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+            Vector2 direction = (transform.position - collision.transform.position).normalized;
+            rb.AddForce(direction * pullStrength);
         }
     }
 
     private void UpdateRange()
     {
-        transform.localScale = new Vector3(range, range, 1);  // Modifies scale to make the collider bigger
+        transform.localScale = new Vector3(range, range, 1);
     }
 
     public void InitializeStats()

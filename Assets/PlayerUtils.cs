@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class PlayerUtils : MonoBehaviour
 {
-    public static PlayerUtils instance;
+    public static PlayerUtils Instance { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
-
+            Instance = this;
         }
         else
         {
@@ -23,16 +22,19 @@ public class PlayerUtils : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the normalized direction from chosen position to player's position.
+    /// Returns the normalized direction from a chosen position to the player's position.
     /// </summary>
-    /// <param name="objPosition"></param>
-    /// <returns></returns>
-    public Vector2 GetDirectionToPlayer(Vector2 objPosition)
+    public Vector2 GetDirectionToPlayer(Vector2 origin)
     {
-        Vector2 playerPosition = transform.position;
+        Vector2 playerPos = transform.position;
+        return (playerPos - origin).normalized;
+    }
 
-        Vector2 direction = playerPosition - objPosition;
-
-        return direction.normalized;
+    /// <summary>
+    /// Returns the distance between an object and the player.
+    /// </summary>
+    public float GetDistanceToPlayer(Vector2 origin)
+    {
+        return Vector2.Distance(transform.position, origin);
     }
 }

@@ -104,17 +104,17 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         foreach (var costData in node.costs)
         {
             PlayerResources.instance.AddResource(costData.resourceType, -costData.cost);
-            PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
+        }
 
-            if (node.currentUpgradeAmount < node.maxUpgrades)
-            {
-                node.currentUpgradeAmount++;
-            }
+        PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
+
+        if (node.currentUpgradeAmount < node.maxUpgrades)
+        {
+            node.currentUpgradeAmount++;
         }
 
         SetupTooltip();
     }
-
     public bool IsMaxedOut() => node.currentUpgradeAmount >= node.maxUpgrades;
 
     public bool CanBuy()
