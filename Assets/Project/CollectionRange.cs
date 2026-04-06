@@ -4,7 +4,7 @@ public class CollectionRange : MonoBehaviour
 {
     [SerializeField] private float range = 1.5f;
     [SerializeField] private float pullStrength = 10f;
-    [SerializeField] private int resourceLayer = 3;
+    [SerializeField] private LayerMask resourceLayer;
     [SerializeField] private bool updateRangePerFrame = false;
 
     private void Start()
@@ -23,11 +23,13 @@ public class CollectionRange : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == resourceLayer)
+        if (((1 << collision.gameObject.layer) & resourceLayer) != 0)
         {
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            Vector2 direction = (transform.position - collision.transform.position).normalized;
-            rb.AddForce(direction * pullStrength);
+            if (collision.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+            {
+                Vector2 direction = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(direction * pullStrength, ForceMode2D.Force);
+            }
         }
     }
 

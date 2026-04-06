@@ -404,8 +404,8 @@ MonoBehaviour:
     m_Right: 100
     m_Top: 100
     m_Bottom: 100
-  m_ChildAlignment: 2
-  m_Spacing: 100
+  m_ChildAlignment: 1
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -933,6 +933,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   resourceRowPrefab: {fileID: 2255969786182227147, guid: 6f451baffd418cc4d9b4bc9554c099c8, type: 3}
   container: {fileID: 3701814714498725329}
+  resourceIcons:
+  - resourceType: 0
+    iconSprite: {fileID: -7618021496550400317, guid: cbc2ec93f799df84ea4b95b08cb0dcc7, type: 3}
+  - resourceType: 1
+    iconSprite: {fileID: 4060313460776795396, guid: 384d0a0b1ca6d0744b69b8950c32b281, type: 3}
+  - resourceType: 2
+    iconSprite: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
+  - resourceType: 3
+    iconSprite: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
+  - resourceType: 4
+    iconSprite: {fileID: -5817558424466443108, guid: 27e62a6ada837a740b5180517b2f42e1, type: 3}
+  - resourceType: 5
+    iconSprite: {fileID: -7430558899833497709, guid: 31b11b64214335e4aa4696578328824d, type: 3}
+  - resourceType: 6
+    iconSprite: {fileID: 8528324571735724621, guid: 988cef86d313a9d4fb9d68eb372c572e, type: 3}
 --- !u!1 &9184428882131399242
 GameObject:
   m_ObjectHideFlags: 0

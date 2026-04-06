@@ -17,8 +17,8 @@ public class PlayerCursor : MonoBehaviour
     {
         instance = this;
     }
-    public enum Cursors 
-    { 
+    public enum Cursors
+    {
         Default,
         ZoomIn,
         ZoomOut,
@@ -35,17 +35,12 @@ public class PlayerCursor : MonoBehaviour
 
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
         transform.position = worldPos;
-
-        if (Mouse.current.leftButton.wasPressedThisFrame && clickParticle != null)
-        {
-            HelperFunctions.SpawnParticleSystem(clickParticle, 1f, transform.position);
-        }
     }
 
 
     public void ChangeSprite(Cursors cursorImage)
     {
-        switch (cursorImage) 
+        switch (cursorImage)
         {
             case Cursors.Default: Cursor.SetCursor(cursorSprites[0], normalHotspot, CursorMode.Auto); break;
             case Cursors.ZoomIn: Cursor.SetCursor(cursorSprites[1], normalHotspot, CursorMode.Auto); break;

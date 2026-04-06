@@ -1,23 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class HelperFunctions : MonoBehaviour
+public static class HelperFunctions
 {
-    public static HelperFunctions instance;
-
-    private void Awake()
-    {
-        
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     /// <summary>
     /// Converts the current mouse position to a Vector2 in World Space.
     /// </summary>
@@ -35,9 +20,20 @@ public class HelperFunctions : MonoBehaviour
         return new Vector2(worldPos.x, worldPos.y);
     }
 
-    public static void SpawnParticleSystem(GameObject particles, float lifetime, Vector3 position)
+    public static string FormatNumber(float number)
     {
-        GameObject particle = Instantiate(particles, position, Quaternion.identity);
-        Destroy(particle, lifetime);
+        if (number < 1000)
+            return number.ToString("0.#");
+
+        string[] suffixes = { "K", "M", "B" };
+        int suffixIndex = -1;
+
+        while (number >= 1000 && suffixIndex < suffixes.Length - 1)
+        {
+            number /= 1000f;
+            suffixIndex++;
+        }
+
+        return $"{number:0.#}{suffixes[suffixIndex]}";
     }
 }

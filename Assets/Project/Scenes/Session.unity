@@ -1855,9 +1855,9 @@ MonoBehaviour:
   drillDamage: 1
   drillEnemyDamage: 0.5
   missileDamage: 10
-  missileAttackSpeed: 4.1
+  missileAttackSpeed: 10
   missileBulletSpeed: 4
-  missileArea: 0.5
+  missileArea: 17.88
   missileEnemyDamage: 20
   collectionRange: 3
 --- !u!4 &1331181933
@@ -2619,6 +2619,18 @@ PrefabInstance:
     - target: {fileID: 5041261646858974740, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368684831225879182, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: range
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368684831225879182, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: pullStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368684831225879182, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: resourceLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
