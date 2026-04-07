@@ -45,7 +45,7 @@ public class Fuel : MonoBehaviour
         }
         else
         {
-            RemoveFuel(1.5f * Time.deltaTime);
+            RemoveFuel(1f * Time.deltaTime);
         }      
     }
 

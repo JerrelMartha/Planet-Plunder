@@ -39,7 +39,7 @@ public class Drill : Weapon
             Enemy enemy = col.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(drillEnemyDamage);
             }
         }
     }

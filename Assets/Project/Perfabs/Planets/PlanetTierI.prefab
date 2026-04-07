@@ -58,3 +58,11 @@ MonoBehaviour:
   Layer4Chance: 0.3
   Layer5Chance: 0.2
   planetRadius: 15
+  Enemies:
+  - SpawnChance: 10
+    enemyPrefab: {fileID: 8818011764363171550, guid: dfdd42e9d6bfdd8498536b2c335f4ac2, type: 3}
+  - SpawnChance: 10
+    enemyPrefab: {fileID: 1810904969495047539, guid: 646b5b270c29275468b1a2eb674c58c6, type: 3}
+  - SpawnChance: 2
+    enemyPrefab: {fileID: 2036583634342568299, guid: 240c7e4d53bdd98448def64d1ce1ca06, type: 3}
+  enemySpawnHeight: 1

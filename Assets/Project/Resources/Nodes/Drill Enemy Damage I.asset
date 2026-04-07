@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Drill Enemy Damage I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: DrillEnemyDamage_01
+  upgradeName: Drill Enemy Damage I
+  upgradeDescription: 'Deals + 0.5 damage when hitting enemies with the Drill. '
+  upgradeIcon: {fileID: -9041546000618029716, guid: b9e7e9393eff5ad4bae7ee214edd9524, type: 3}
+  upgradeType: 0
+  statToUpgrade: 16
+  currentUpgradeAmount: 0
+  maxUpgrades: 2
+  upgradeAdd: 0.5
+  prerequisites:
+  - {fileID: 11400000, guid: acf511b6ef3d99747909146dd7ee862c, type: 2}
+  costs:
+  - resourceType: 2
+    resourceIcon: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
+    cost: 5
+  - resourceType: 5
+    resourceIcon: {fileID: -7430558899833497709, guid: 31b11b64214335e4aa4696578328824d, type: 3}
+    cost: 1
+  isUnlocked: 1
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0
