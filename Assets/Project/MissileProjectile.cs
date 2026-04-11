@@ -43,6 +43,11 @@ public class MissileProjectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamage(missileDamage); 
         }
+
+        if (collision.gameObject.layer == 11) // BossLayer
+        {
+            collision.gameObject.GetComponent<Boss>().TakeDamage(missileDamage);
+        }
         Die();
     }
 

@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +12,7 @@ public enum Resource
     Diamond,
     Bolt,
     MetalPlate,
+    EnergyCore,
 }
 
 
@@ -122,8 +122,4 @@ public class PlayerResources : MonoBehaviour
             resourceInventory[item.type] = item.amount;
         }
     }
-
-
-
-
 }

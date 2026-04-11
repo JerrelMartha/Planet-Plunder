@@ -6,40 +6,56 @@ public class Drill : Weapon
     [SerializeField] private float drillRadius = 1f;
     [SerializeField] private float offset = 5f;
     [SerializeField] private LayerMask resourceLayer;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask bossLayer;
 
     public bool BuffedDrillActive = false;
     public bool weaponActive = true;
 
+    private SpriteRenderer sr;
+
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         InitializeStats();
     }
+
     protected override void Update()
     {
         base.Update();
-        transform.localScale = new Vector3(drillRadius * offset, drillRadius * offset, 1);
-        this.enabled = weaponActive;
-        GetComponent<SpriteRenderer>().enabled = weaponActive;
+
+        if (sr != null)
+            sr.enabled = weaponActive;
+
+        if (weaponActive)
+        {
+            transform.localScale = new Vector3(drillRadius * offset, drillRadius * offset, 1);
+        }
     }
+
     public override void Fire()
     {
-        int combinedLayerMask = resourceLayer | (1 << 9);
+        if (!weaponActive) return;
+
+        int combinedLayerMask = resourceLayer.value | enemyLayer.value | bossLayer.value;
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(firepoint.position, drillRadius, combinedLayerMask);
 
         foreach (Collider2D col in hitColliders)
         {
-
-            ResourceTile resource = col.GetComponent<ResourceTile>();
-            if (resource != null)
+            if (col.TryGetComponent(out ResourceTile resource))
             {
                 resource.TakeDamage(damage);
             }
 
-            Enemy enemy = col.GetComponent<Enemy>();
-            if (enemy != null)
+            if (col.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(drillEnemyDamage);
+            }
+
+            if (col.TryGetComponent(out Boss bossComponent))
+            {
+                bossComponent.TakeDamage(drillEnemyDamage);
             }
         }
     }
@@ -54,10 +70,11 @@ public class Drill : Weapon
 
     public void InitializeStats()
     {
+        if (PlayerStats.instance == null) return;
+
         drillRadius = PlayerStats.instance.drillRadius;
         damage = PlayerStats.instance.drillDamage;
         attackSpeed = PlayerStats.instance.drillAttackSpeed;
         drillEnemyDamage = PlayerStats.instance.drillEnemyDamage;
     }
 }
-
