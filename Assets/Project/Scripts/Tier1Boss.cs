@@ -27,7 +27,6 @@ public class Tier1Boss : Boss
                 MoveTowardsPlayer();
                 break;
             case BossStates.ATTACKING:
-                FacePlayer();
                 break;
             case BossStates.IDLE:
                 rb.linearVelocity = Vector2.zero;
@@ -54,18 +53,9 @@ public class Tier1Boss : Boss
 
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
-        FacePlayer();
     }
 
-    private void FacePlayer()
-    {
-        if (player == null) return;
-
-        if (player.position.x > transform.position.x)
-            transform.localScale = new Vector3(1, 1, 1);
-        else
-            transform.localScale = new Vector3(-1, 1, 1);
-    }
+    
 
     protected override IEnumerator AttackPattern()
     {

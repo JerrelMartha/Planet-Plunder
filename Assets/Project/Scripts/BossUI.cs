@@ -9,6 +9,5 @@ public class BossUI : MonoBehaviour
     private void Update()
     {
         healthFill.fillAmount = bossScript.GetHealthNormalized();
-        Debug.Log(bossScript.GetHealthNormalized());
     }
 }
