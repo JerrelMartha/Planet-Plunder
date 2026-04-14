@@ -14,24 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: MaxFuel_01
   upgradeName: Max Fuel I
-  upgradeDescription: Upgrades Max Fuel by 10
+  upgradeDescription: Upgrades Max Fuel by 5
   upgradeIcon: {fileID: 1680126496735290735, guid: 86a6c1c052ea2934ba387b3ea6f2040e, type: 3}
   upgradeType: 2
   statToUpgrade: 5
-  currentUpgradeAmount: 3
-  maxUpgrades: 3
-  upgradeAdd: 10
+  currentUpgradeAmount: 1
+  maxUpgrades: 2
+  upgradeAdd: 5
   prerequisites:
   - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
   costs:
-  - resourceType: 0
-    resourceIcon: {fileID: -7618021496550400317, guid: cbc2ec93f799df84ea4b95b08cb0dcc7, type: 3}
-    cost: 20
   - resourceType: 1
     resourceIcon: {fileID: 4060313460776795396, guid: 384d0a0b1ca6d0744b69b8950c32b281, type: 3}
-    cost: 5
+    baseCost: 3
+    costIncrement: 5
   isUnlocked: 1
   isUnlockedByDefault: 0
   isVisible: 0
-  isPurchased: 1
-  isMaxedOut: 1
+  isPurchased: 0
+  isMaxedOut: 0

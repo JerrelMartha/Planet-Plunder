@@ -21,24 +21,25 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private bool costSpawned = false;
     private List<TextMeshProUGUI> spawnedCostTexts = new List<TextMeshProUGUI>();
 
-
     private void OnValidate()
     {
-
 #if UNITY_EDITOR
-        UnityEditor.Undo.RecordObject(transform.parent.gameObject, "Rename Node Parent");
+        if (node != null && transform.parent != null)
+        {
+            UnityEditor.Undo.RecordObject(transform.parent.gameObject, "Rename Node Parent");
+            transform.parent.name = node.upgradeName;
+        }
 #endif
-        transform.parent.name = node.upgradeName;
-
-        upgradeName.text = node.upgradeName;
-        upgradeDescription.text = node.upgradeDescription;
-        upgradeAmount.text = $"{node.currentUpgradeAmount} / {node.maxUpgrades}";
-
-        imageComponent = GetComponent<Image>();
-        backgroundImage = transform.parent.GetComponent<Image>();
-
-        imageComponent.sprite = node.upgradeIcon;
-        UpgradeTypeColorChange(node.upgradeType);
+        if (node != null)
+        {
+            upgradeName.text = node.upgradeName;
+            upgradeDescription.text = node.upgradeDescription;
+            upgradeAmount.text = $"{node.currentUpgradeAmount} / {node.maxUpgrades}";
+            imageComponent = GetComponent<Image>();
+            if (transform.parent != null) backgroundImage = transform.parent.GetComponent<Image>();
+            imageComponent.sprite = node.upgradeIcon;
+            UpgradeTypeColorChange(node.upgradeType);
+        }
     }
 
     private void Awake()
@@ -52,10 +53,44 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         imageComponent.sprite = node.upgradeIcon;
         UpgradeTypeColorChange(node.upgradeType);
+        UpdateNodeStatus();
+    }
+
+    private void Update()
+    {
+        UpdateNodeStatus();
+    }
+
+    private void UpdateNodeStatus()
+    {
+        bool prerequisitesMet = HasPrerequisites();
+
+        if (imageComponent.enabled != prerequisitesMet)
+        {
+            imageComponent.enabled = prerequisitesMet;
+        }
+
+        if (backgroundImage != null && backgroundImage.enabled != prerequisitesMet)
+        {
+            backgroundImage.enabled = prerequisitesMet;
+        }
+
+        if (prerequisitesMet)
+        {
+            if (node.currentUpgradeAmount > 0)
+            {
+                imageComponent.color = Color.white;
+            }
+            else
+            {
+                imageComponent.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+            }
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!HasPrerequisites()) return;
         tooltip.SetActive(true);
         SetupTooltip();
     }
@@ -65,20 +100,12 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         tooltip.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (HasPrerequisites())
-        {
-            Unlock();
-        }
-    }
-
     public bool CanAfford()
     {
         foreach (var costData in node.costs)
         {
-            float currentAmount = PlayerResources.instance.GetResourceAmount(costData.resourceType);
-            if (currentAmount < costData.cost) return false;
+            if (PlayerResources.instance.GetResourceAmount(costData.resourceType) < costData.GetCurrentCost(node.currentUpgradeAmount))
+                return false;
         }
         return true;
     }
@@ -86,16 +113,12 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool HasPrerequisites()
     {
         if (node.prerequisites == null || node.prerequisites.Count == 0) return true;
-
         foreach (var prereq in node.prerequisites)
         {
-            if (!prereq.isUnlocked) return false;
+            if (prereq.currentUpgradeAmount <= 0) return false;
         }
         return true;
     }
-
-    public bool IsUnlocked() => node.isUnlocked;
-    public void Unlock() => node.isUnlocked = true;
 
     public void Buy()
     {
@@ -103,27 +126,38 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         foreach (var costData in node.costs)
         {
-            PlayerResources.instance.AddResource(costData.resourceType, -costData.cost);
+            float finalCost = costData.GetCurrentCost(node.currentUpgradeAmount);
+            PlayerResources.instance.AddResource(costData.resourceType, -finalCost);
         }
 
-        PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
+        if (node is WeaponNodeSO weaponNode)
+        {
+            WeaponManager.instance.UnlockWeapon(weaponNode.weaponID);
+        }
+        else
+        {
+            PlayerStats.instance.IncreaseStat(node.statToUpgrade, node.upgradeAdd);
+        }
 
         if (node.currentUpgradeAmount < node.maxUpgrades)
         {
             node.currentUpgradeAmount++;
         }
 
+        node.isUnlocked = true;
         SetupTooltip();
     }
+
     public bool IsMaxedOut() => node.currentUpgradeAmount >= node.maxUpgrades;
 
     public bool CanBuy()
     {
-        return !IsMaxedOut() && CanAfford() && HasPrerequisites() && IsUnlocked();
+        return !IsMaxedOut() && CanAfford() && HasPrerequisites();
     }
 
     private void UpgradeTypeColorChange(UpgradeType upgradeType)
     {
+        if (backgroundImage == null) return;
         switch (upgradeType)
         {
             case UpgradeType.Offense: backgroundImage.color = Color.red; break;
@@ -141,7 +175,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         Vector2[] positions = new Vector2[] { new Vector2(0, -125), new Vector2(-200, -125), new Vector2(200, -125) };
 
-        if (!costSpawned && Application.isPlaying) // Only spawn objects while the game is running
+        if (!costSpawned && Application.isPlaying)
         {
             costSpawned = true;
             for (int i = 0; i < node.costs.Count; i++)
@@ -149,41 +183,44 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 CreateCostUI(positions[i], node.costs[i]);
             }
         }
-
         UpdateAllCostVisuals();
     }
 
     private void CreateCostUI(Vector2 position, CostData costData)
     {
         GameObject obj = Instantiate(costUI);
-
         Transform tooltipContainer = tooltip.transform.Find("tooltip") ?? tooltip.transform;
         obj.transform.SetParent(tooltipContainer, false);
-
         RectTransform rectTransform = obj.GetComponent<RectTransform>();
         Image resourceImage = obj.GetComponentInChildren<Image>();
         TextMeshProUGUI resourceValue = obj.GetComponentInChildren<TextMeshProUGUI>();
-
         rectTransform.anchoredPosition = position;
         resourceImage.sprite = costData.resourceIcon;
-
         spawnedCostTexts.Add(resourceValue);
     }
 
     private void UpdateAllCostVisuals()
     {
-        // Only attempt this if the game is running and costs are spawned
         if (!Application.isPlaying) return;
+
+        bool isMaxed = IsMaxedOut();
 
         for (int i = 0; i < node.costs.Count; i++)
         {
             if (i >= spawnedCostTexts.Count) break;
 
-            CostData costData = node.costs[i];
-            TextMeshProUGUI text = spawnedCostTexts[i];
-
-            text.text = costData.cost.ToString();
-            text.color = costData.CanAffordResource() ? Color.white : Color.red;
+            if (isMaxed)
+            {
+                spawnedCostTexts[i].text = "MAX";
+                spawnedCostTexts[i].color = Color.yellow;
+            }
+            else
+            {
+                CostData costData = node.costs[i];
+                float currentCost = costData.GetCurrentCost(node.currentUpgradeAmount);
+                spawnedCostTexts[i].text = currentCost.ToString();
+                spawnedCostTexts[i].color = (PlayerResources.instance.GetResourceAmount(costData.resourceType) >= currentCost) ? Color.white : Color.red;
+            }
         }
     }
 }

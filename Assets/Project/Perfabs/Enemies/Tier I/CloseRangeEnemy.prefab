@@ -106,13 +106,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec75ae7b411a6774dbb8193f7bbc93f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 100
+  health: 20
   speed: 1
   stopDistance: 0.001
-  aggroRange: 3
+  aggroRange: 2
   patrolSpeed: 0.1
   droppedResource: {fileID: 4432026394350351376, guid: 9e493220a9d5e8643bc6ce5a2adedf96, type: 3}
-  contactDamage: 10
+  contactDamage: 2
   damageCooldown: 1
 --- !u!50 &6150067887514430651
 Rigidbody2D:

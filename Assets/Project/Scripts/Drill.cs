@@ -10,32 +10,20 @@ public class Drill : Weapon
     [SerializeField] private LayerMask bossLayer;
 
     public bool BuffedDrillActive = false;
-    public bool weaponActive = true;
 
-    private SpriteRenderer sr;
-
-    private void Start()
+    protected void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         InitializeStats();
     }
 
     protected override void Update()
     {
         base.Update();
-
-        if (sr != null)
-            sr.enabled = weaponActive;
-
-        if (weaponActive)
-        {
-            transform.localScale = new Vector3(drillRadius * offset, drillRadius * offset, 1);
-        }
+        transform.localScale = new Vector3(drillRadius * offset, drillRadius * offset, 1);
     }
 
     public override void Fire()
     {
-        if (!weaponActive) return;
 
         int combinedLayerMask = resourceLayer.value | enemyLayer.value | bossLayer.value;
 

@@ -10,25 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
-  m_Name: Drill Enemy Damage I
+  m_Name: Drill Damage III
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
-  nodeID: DrillEnemyDamage_01
-  upgradeName: Drill Enemy Damage I
-  upgradeDescription: 'Deals + 1.5 damage when hitting enemies with the Drill. '
-  upgradeIcon: {fileID: -9041546000618029716, guid: b9e7e9393eff5ad4bae7ee214edd9524, type: 3}
+  nodeID: DrillDamage_03
+  upgradeName: Drill Damage III
+  upgradeDescription: Increases Drill Damage by 1.
+  upgradeIcon: {fileID: -6506552428325161499, guid: 8d7c9ad3391a5634799821868753e446, type: 3}
   upgradeType: 0
-  statToUpgrade: 16
-  currentUpgradeAmount: 1
-  maxUpgrades: 1
-  upgradeAdd: 0.5
+  statToUpgrade: 9
+  currentUpgradeAmount: 0
+  maxUpgrades: 3
+  upgradeAdd: 1
   prerequisites:
-  - {fileID: 11400000, guid: c8941ff4adb143a449891544560b2cd6, type: 2}
+  - {fileID: 11400000, guid: 47e158eada1734b48964aeb6a790c71a, type: 2}
   costs:
+  - resourceType: 2
+    resourceIcon: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
+    baseCost: 5
+    costIncrement: 5
   - resourceType: 1
     resourceIcon: {fileID: 4060313460776795396, guid: 384d0a0b1ca6d0744b69b8950c32b281, type: 3}
-    baseCost: 25
-    costIncrement: 0
-  isUnlocked: 1
+    baseCost: 10
+    costIncrement: 10
+  isUnlocked: 0
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

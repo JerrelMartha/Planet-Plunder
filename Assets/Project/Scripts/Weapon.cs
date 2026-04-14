@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +10,29 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected GameObject projectile;
     [SerializeField] protected Transform firepoint;
 
-    protected bool canFire = true;
+    [SerializeField] protected bool weaponUnlocked = true;
+    [SerializeField] public string weaponID;
 
+    private float nextFireTime;
     private bool isHoldingFire;
+
+    protected virtual void OnEnable()
+    {
+        if (WeaponManager.instance != null && WeaponManager.instance.IsIDUnlocked(weaponID))
+        {
+            weaponUnlocked = true;
+        }
+
+        if (!weaponUnlocked)
+        {
+            enabled = false;
+        }
+    }
+
+    protected virtual void OnDisable()
+    {
+        isHoldingFire = false;
+    }
 
     public void TryFire(InputAction.CallbackContext ctx)
     {
@@ -23,22 +42,29 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isHoldingFire && canFire)
+        if (isHoldingFire && Time.time >= nextFireTime)
         {
             Fire();
-            StartCoroutine(WeaponCooldown());
+            nextFireTime = Time.time + (1f / attackSpeed);
         }
     }
 
     public virtual void Fire()
     {
-        GameObject spawnedObject = Instantiate(projectile, firepoint);
-        
+        if (projectile != null && firepoint != null)
+        {
+            Instantiate(projectile, firepoint.position, firepoint.rotation);
+        }
     }
-    protected IEnumerator WeaponCooldown()
+
+    public bool IsWeaponUnlocked()
     {
-        canFire = false;
-        yield return new WaitForSeconds(1 / attackSpeed);
-        canFire = true;
+        return weaponUnlocked;
+    }
+
+    public void Unlock()
+    {
+        weaponUnlocked = true;
+        enabled = true;
     }
 }

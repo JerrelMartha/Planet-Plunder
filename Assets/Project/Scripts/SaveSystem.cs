@@ -12,20 +12,24 @@ public static class SaveSystem
         public PlayerStats.StatSaveData playerStats;
         public List<NodeSaveData> nodesData;
         public List<PlayerResources.ResourceSaveData> resourcesData;
+        public List<string> unlockedWeaponIDs;
     }
 
     public static void SaveGame()
     {
         SaveData data = new SaveData();
 
-        // Existing Save Logic
         if (PlayerStats.instance != null) PlayerStats.instance.SaveData(ref data.playerStats);
         if (GameManager.instance != null) data.nodesData = GameManager.instance.GetNodeSaveData();
 
-        // NEW: Save Resources
         if (PlayerResources.instance != null)
         {
             data.resourcesData = PlayerResources.instance.GetSaveData();
+        }
+
+        if (WeaponManager.instance != null)
+        {
+            data.unlockedWeaponIDs = WeaponManager.instance.GetUnlockedWeaponIDs();
         }
 
         string json = JsonUtility.ToJson(data, true);
@@ -39,14 +43,17 @@ public static class SaveSystem
             string json = File.ReadAllText(savePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            // Existing Load Logic
             if (PlayerStats.instance != null) PlayerStats.instance.LoadData(data.playerStats);
             if (GameManager.instance != null) GameManager.instance.ApplyNodeLoadData(data.nodesData);
 
-            // NEW: Load Resources
             if (PlayerResources.instance != null)
             {
                 PlayerResources.instance.LoadData(data.resourcesData);
+            }
+
+            if (WeaponManager.instance != null)
+            {
+                WeaponManager.instance.LoadData(data.unlockedWeaponIDs);
             }
         }
     }

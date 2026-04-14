@@ -122,4 +122,13 @@ public class PlayerResources : MonoBehaviour
             resourceInventory[item.type] = item.amount;
         }
     }
+
+    [ContextMenu("Inf Resources")]
+    public void GiveAllResources()
+    {
+        foreach (Resource res in Enum.GetValues(typeof(Resource)))
+        {
+            AddResource(res, 9999f);
+        }
+    }
 }

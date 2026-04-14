@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public enum UpgradeType
@@ -15,11 +14,17 @@ public class CostData
 {
     public Resource resourceType;
     public Sprite resourceIcon;
-    public float cost;
+    public float baseCost;
+    public float costIncrement = 5f;
 
-    public bool CanAffordResource()
+    public float GetCurrentCost(int currentLevel)
     {
-        return cost < PlayerResources.instance.GetResourceAmount(resourceType);
+        return baseCost + (currentLevel * costIncrement);
+    }
+
+    public bool CanAffordResource(int currentLevel)
+    {
+        return PlayerResources.instance.GetResourceAmount(resourceType) >= GetCurrentCost(currentLevel);
     }
 }
 
@@ -56,5 +61,4 @@ public class NodeSO : ScriptableObject
         isPurchased = false;
         isMaxedOut = false;
     }
-
 }

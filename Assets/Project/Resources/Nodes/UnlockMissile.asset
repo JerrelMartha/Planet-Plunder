@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d154e7c44cff9f44184de31fdf141bf7, type: 3}
+  m_Name: UnlockMissile
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponNodeSO
+  nodeID: UnlockMissile
+  upgradeName: Missile
+  upgradeDescription: Unlocks the Missile Weapon.
+  upgradeIcon: {fileID: 5091146171140590353, guid: 4da1f1d0bfa2f5646a672d12cb201c4a, type: 3}
+  upgradeType: 0
+  statToUpgrade: 0
+  currentUpgradeAmount: 0
+  maxUpgrades: 1
+  upgradeAdd: 0
+  prerequisites:
+  - {fileID: 11400000, guid: 28306292d3465944e951896b66c95754, type: 2}
+  costs:
+  - resourceType: 3
+    resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
+    baseCost: 5
+    costIncrement: 0
+  isUnlocked: 0
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0
+  weaponID: Missile

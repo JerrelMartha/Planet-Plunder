@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
-  m_Name: Drill Damage I
+  m_Name: Drill Speed II
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
-  nodeID: DrillDamage_01
-  upgradeName: Drill Damage I
-  upgradeDescription: Increases Drill damage by 0.2.
-  upgradeIcon: {fileID: -6506552428325161499, guid: 8d7c9ad3391a5634799821868753e446, type: 3}
+  nodeID: DrillSpeed_02
+  upgradeName: Drill Speed II
+  upgradeDescription: Upgrades Drill Attack Speed by 0.5.
+  upgradeIcon: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
   upgradeType: 0
-  statToUpgrade: 9
+  statToUpgrade: 8
   currentUpgradeAmount: 5
   maxUpgrades: 5
-  upgradeAdd: 0.2
-  prerequisites: []
+  upgradeAdd: 0.5
+  prerequisites:
+  - {fileID: 11400000, guid: c8941ff4adb143a449891544560b2cd6, type: 2}
   costs:
-  - resourceType: 0
-    resourceIcon: {fileID: -7618021496550400317, guid: cbc2ec93f799df84ea4b95b08cb0dcc7, type: 3}
+  - resourceType: 2
+    resourceIcon: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
     baseCost: 2
     costIncrement: 2
   isUnlocked: 1
-  isUnlockedByDefault: 1
+  isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0
   isMaxedOut: 0

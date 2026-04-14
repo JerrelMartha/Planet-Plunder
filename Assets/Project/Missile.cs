@@ -4,18 +4,15 @@ public class Missile : Weapon
 {
     private float missileArea;
 
-    public bool weaponActive = true;
 
-    private void Start()
+    protected void Start()
     {
-        InitializeStats();
-        
+        InitializeStats();  
     }
 
     protected override void Update()
     {
         base.Update();
-        this.enabled = weaponActive;
     }
 
     public override void Fire()
