@@ -5,6 +5,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected float damage;
     [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected float cost;
     [Tooltip("2 attackSpeed = 2 projectiles per second")]
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected GameObject projectile;
@@ -53,6 +54,7 @@ public class Weapon : MonoBehaviour
     {
         if (projectile != null && firepoint != null)
         {
+            Fuel.instance.RemoveFuel(cost);
             Instantiate(projectile, firepoint.position, firepoint.rotation);
         }
     }

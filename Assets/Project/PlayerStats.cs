@@ -22,6 +22,7 @@ public enum Stats
     MissileArea,
     MissileEnemyDamage,
     DrillEnemyDamage,
+    MissileCost,
 }
 
 public class PlayerStats : MonoBehaviour
@@ -52,6 +53,7 @@ public class PlayerStats : MonoBehaviour
     public float missileBulletSpeed = 5f;
     public float missileArea = 3f;
     public float missileEnemyDamage = 20f;
+    public float missileCost = 2f;
 
     [Header("Collection")]
     public float collectionRange = 1.5f;
@@ -140,6 +142,9 @@ public class PlayerStats : MonoBehaviour
             case Stats.MissileEnemyDamage:
                 missileEnemyDamage += amount;
                 break;
+            case Stats.MissileCost:
+                missileCost += amount;
+                break;
             default:
                 Debug.LogWarning("Stat does not exist");
                 break;
@@ -147,7 +152,35 @@ public class PlayerStats : MonoBehaviour
 
         SaveSystem.SaveGame();
     }
-    
+
+    public float GetStatValue(Stats stats)
+    {
+        switch (stats)
+        {
+            case Stats.MoveSpeed: return moveSpeed;
+            case Stats.DashForce: return dashForce;
+            case Stats.BoostMult: return boostMultiplier;
+            case Stats.DashCooldown: return dashCooldown;
+            case Stats.DashCost: return dashCost;
+            case Stats.MaxFuel: return maxFuel;
+            case Stats.FuelSteal: return fuelSteal;
+            case Stats.DrillRadius: return drillRadius;
+            case Stats.DrillAttackSpeed: return drillAttackSpeed;
+            case Stats.DrillDamage: return drillDamage;
+            case Stats.CollectionRange: return collectionRange;
+            case Stats.MissileDamage: return missileDamage;
+            case Stats.MissileAttackSpeed: return missileAttackSpeed;
+            case Stats.MissileBulletSpeed: return missileBulletSpeed;
+            case Stats.MissileArea: return missileArea;
+            case Stats.DrillEnemyDamage: return drillEnemyDamage;
+            case Stats.MissileEnemyDamage: return missileEnemyDamage;
+            case Stats.MissileCost: return missileCost;
+            default:
+                Debug.LogWarning("Stat does not exist");
+                return 0;
+        }
+    }
+
 
     public void SaveData(ref StatSaveData data)
     {
@@ -166,6 +199,7 @@ public class PlayerStats : MonoBehaviour
         data.missileBulletSpeed = missileBulletSpeed;
         data.missileArea = missileArea;
         data.collectionRange = collectionRange;
+        data.missileCost = missileCost;
     }
 
     public void LoadData(StatSaveData data)
@@ -185,6 +219,7 @@ public class PlayerStats : MonoBehaviour
         this.missileBulletSpeed = data.missileBulletSpeed;
         this.missileArea = data.missileArea;
         this.collectionRange = data.collectionRange;
+        this.missileCost = data.missileCost;
     }
 
     [System.Serializable]
@@ -193,7 +228,7 @@ public class PlayerStats : MonoBehaviour
         public float moveSpeed, dashForce, boostMult, dashCooldown, dashCost;
         public float maxFuel, fuelSteal;
         public float drillRadius, drillAttackSpeed, drillDamage;
-        public float missileDamage, missileAttackSpeed, missileBulletSpeed, missileArea;
+        public float missileDamage, missileAttackSpeed, missileBulletSpeed, missileArea, missileCost;
         public float collectionRange;
     }
 }

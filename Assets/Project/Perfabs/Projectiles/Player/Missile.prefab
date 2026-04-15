@@ -172,6 +172,7 @@ MonoBehaviour:
   missileArea: 0
   missileSpeed: 0
   missileDamage: 0
+  particles: {fileID: 4792344719497740027, guid: 1c51b5622fa0cc54187bfe35dbc82d49, type: 3}
   tileLayer:
     serializedVersion: 2
     m_Bits: 64

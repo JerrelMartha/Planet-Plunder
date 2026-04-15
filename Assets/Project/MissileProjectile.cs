@@ -7,6 +7,7 @@ public class MissileProjectile : MonoBehaviour
     public float missileSpeed;
     public float missileDamage;
     private float missileLifetime = 3f;
+    [SerializeField] private GameObject particles;
     [SerializeField] private LayerMask tileLayer;
 
     private Vector2 direction;
@@ -62,6 +63,8 @@ public class MissileProjectile : MonoBehaviour
                 tile.TakeDamage(missileDamage);
             }
         }
+
+        SpawnParticles();
         Destroy(gameObject);
     }
 
@@ -69,5 +72,24 @@ public class MissileProjectile : MonoBehaviour
     {
         yield return new WaitForSeconds(lifetime);
         Die();
+    }
+
+    private void SpawnParticles()
+    {
+        GameObject prt = Instantiate(particles, transform.position, Quaternion.identity);
+
+        ParticleSystem ps = prt.GetComponent<ParticleSystem>();
+
+        if (ps != null)
+        {
+            var main = ps.main;
+
+            float minSpeed = missileArea * 1.5f;
+            float maxSpeed = missileArea * 2f;
+
+            main.startSpeed = new ParticleSystem.MinMaxCurve(minSpeed, maxSpeed);
+        }
+
+        Destroy(prt, 2f);
     }
 }

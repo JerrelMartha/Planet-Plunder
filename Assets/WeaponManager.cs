@@ -50,7 +50,8 @@ public class WeaponManager : MonoBehaviour
     {
         if (savedIDs != null)
         {
-            unlockedWeaponIDs = savedIDs;
+            unlockedWeaponIDs = new List<string>(savedIDs);
+            Debug.Log($"Loaded {unlockedWeaponIDs.Count} weapons from save.");
         }
     }
 }

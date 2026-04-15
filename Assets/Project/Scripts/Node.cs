@@ -13,9 +13,12 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Image backgroundImage;
 
     [SerializeField] private GameObject tooltip;
+    [SerializeField] private GameObject statTooltip;
     [SerializeField] private TextMeshProUGUI upgradeName;
     [SerializeField] private TextMeshProUGUI upgradeDescription;
     [SerializeField] private TextMeshProUGUI upgradeAmount;
+    [SerializeField] private TextMeshProUGUI StatName;
+    [SerializeField] private TextMeshProUGUI StatDisplay;
     [SerializeField] private GameObject costUI;
 
     private bool costSpawned = false;
@@ -145,6 +148,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
         node.isUnlocked = true;
+        SaveSystem.SaveGame();
         SetupTooltip();
     }
 
@@ -172,6 +176,23 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         upgradeName.text = node.upgradeName;
         upgradeDescription.text = node.upgradeDescription;
         upgradeAmount.text = $"{node.currentUpgradeAmount} / {node.maxUpgrades}";
+        StatName.text = node.statToUpgrade.ToString();
+
+        float currentStatValue = PlayerStats.instance.GetStatValue(node.statToUpgrade);
+
+        if (IsMaxedOut())
+        {
+            statTooltip.SetActive(false);
+        }
+        else
+        {
+            float nextStatValue = currentStatValue + node.upgradeAdd;
+
+            string currentFormatted = currentStatValue.ToString("F1");
+            string nextFormatted = nextStatValue.ToString("F1");
+
+            StatDisplay.text = $"{currentFormatted} > <color=#00FF00>{nextFormatted}</color>";
+        }
 
         Vector2[] positions = new Vector2[] { new Vector2(0, -125), new Vector2(-200, -125), new Vector2(200, -125) };
 

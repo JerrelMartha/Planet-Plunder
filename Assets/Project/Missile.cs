@@ -33,6 +33,7 @@ public class Missile : Weapon
             bulletSpeed = PlayerStats.instance.missileBulletSpeed;
             attackSpeed = PlayerStats.instance.missileAttackSpeed;
             missileArea = PlayerStats.instance.missileArea;
+            cost = PlayerStats.instance.missileCost;
         }
 
     }
