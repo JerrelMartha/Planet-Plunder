@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: DashCooldown_01
   upgradeName: Dash Cooldown I
-  upgradeDescription: 
+  upgradeDescription: You can Dash faster.
   upgradeIcon: {fileID: -3783514898903528425, guid: 613d99ebf10daf741b2394d52a809be4, type: 3}
   upgradeType: 1
   statToUpgrade: 3
-  currentUpgradeAmount: 3
+  currentUpgradeAmount: 0
   maxUpgrades: 3
   upgradeAdd: -0.1
   prerequisites:
@@ -26,12 +26,14 @@ MonoBehaviour:
   costs:
   - resourceType: 2
     resourceIcon: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
-    cost: 10
+    baseCost: 0
+    costIncrement: 5
   - resourceType: 3
     resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
-    cost: 3
-  isUnlocked: 1
+    baseCost: 0
+    costIncrement: 5
+  isUnlocked: 0
   isUnlockedByDefault: 0
   isVisible: 0
-  isPurchased: 1
-  isMaxedOut: 1
+  isPurchased: 0
+  isMaxedOut: 0

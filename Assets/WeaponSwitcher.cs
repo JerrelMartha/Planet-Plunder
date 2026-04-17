@@ -78,9 +78,9 @@ public class WeaponSwitcher : MonoBehaviour
     {
         return slot switch
         {
-            1 => "Drill",
-            2 => "Missile",
-            3 => "ClusterBomb",
+            1 => weaponSlot1.name,
+            2 => weaponSlot2.name,
+            3 => weaponSlot3.name,
             _ => ""
         };
     }

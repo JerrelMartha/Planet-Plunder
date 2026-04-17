@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: DrillDamage_03
   upgradeName: Drill Damage III
-  upgradeDescription: Increases Drill Damage by 1.
+  upgradeDescription: Deal more damage to Tiles with the Drill.
   upgradeIcon: {fileID: -6506552428325161499, guid: 8d7c9ad3391a5634799821868753e446, type: 3}
   upgradeType: 0
   statToUpgrade: 9
-  currentUpgradeAmount: 0
+  currentUpgradeAmount: 3
   maxUpgrades: 3
   upgradeAdd: 1
   prerequisites:
@@ -32,7 +32,7 @@ MonoBehaviour:
     resourceIcon: {fileID: 4060313460776795396, guid: 384d0a0b1ca6d0744b69b8950c32b281, type: 3}
     baseCost: 10
     costIncrement: 10
-  isUnlocked: 0
+  isUnlocked: 1
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

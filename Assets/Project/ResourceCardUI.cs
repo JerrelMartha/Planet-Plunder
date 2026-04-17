@@ -1,4 +1,3 @@
-using System.Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +8,6 @@ public class ResourceCardUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resourceValueText;
     [SerializeField] private Image resourceIconImage;
     public InventoryUISO so;
-
 
     private void OnEnable()
     {
@@ -28,11 +26,11 @@ public class ResourceCardUI : MonoBehaviour
             return;
         }
 
+        float amount = PlayerResources.instance.GetResourceAmount(so.resourceType);
+
         resourceNameText.text = so.resourceName;
-        resourceValueText.text = Mathf.FloorToInt(PlayerResources.instance.GetResourceAmount(so.resourceType)).ToString();
+        resourceValueText.text = HelperFunctions.FormatNumber(amount);
         resourceIconImage.sprite = so.resourceIcon;
         gameObject.name = so.resourceName;
     }
-
-
 }

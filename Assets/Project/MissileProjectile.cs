@@ -21,38 +21,32 @@ public class MissileProjectile : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Expire(missileLifetime));
-        
         Vector2 targetPos = HelperFunctions.GetMouseWorldPosition();
-
-        
         direction = (targetPos - (Vector2)transform.position).normalized;
-
-        
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void FixedUpdate()
     {
-        
         rb.linearVelocity = direction * missileSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 9) // Enemy Layer
+        if (collision.gameObject.layer == 9)
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(missileDamage); 
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(missileDamage);
         }
 
-        if (collision.gameObject.layer == 11) // BossLayer
+        if (collision.gameObject.layer == 11)
         {
             collision.gameObject.GetComponent<Boss>().TakeDamage(missileDamage);
         }
         Die();
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         Collider2D[] tiles = Physics2D.OverlapCircleAll(transform.position, missileArea, tileLayer);
 
@@ -63,7 +57,7 @@ public class MissileProjectile : MonoBehaviour
                 tile.TakeDamage(missileDamage);
             }
         }
-
+        SoundManager.Instance.PlaySound("Explode", true);
         SpawnParticles();
         Destroy(gameObject);
     }
@@ -77,19 +71,14 @@ public class MissileProjectile : MonoBehaviour
     private void SpawnParticles()
     {
         GameObject prt = Instantiate(particles, transform.position, Quaternion.identity);
-
         ParticleSystem ps = prt.GetComponent<ParticleSystem>();
-
         if (ps != null)
         {
             var main = ps.main;
-
             float minSpeed = missileArea * 1.5f;
             float maxSpeed = missileArea * 2f;
-
             main.startSpeed = new ParticleSystem.MinMaxCurve(minSpeed, maxSpeed);
         }
-
         Destroy(prt, 2f);
     }
 }

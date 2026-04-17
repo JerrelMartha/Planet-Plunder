@@ -18,3 +18,5 @@ MonoBehaviour:
   particles: {fileID: 4494805373617972981, guid: 83b27332cb25cb64586f64d7df05b6a1, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   health: 30
+  destroyedSound: TileBreak
+  hitSound: TileHit

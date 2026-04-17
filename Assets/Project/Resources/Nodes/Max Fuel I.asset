@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: MaxFuel_01
   upgradeName: Max Fuel I
-  upgradeDescription: Upgrades Max Fuel by 5
+  upgradeDescription: You can stay longer on a planet.
   upgradeIcon: {fileID: 1680126496735290735, guid: 86a6c1c052ea2934ba387b3ea6f2040e, type: 3}
   upgradeType: 2
   statToUpgrade: 5
-  currentUpgradeAmount: 1
+  currentUpgradeAmount: 2
   maxUpgrades: 2
   upgradeAdd: 5
   prerequisites:
   - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
   costs:
-  - resourceType: 1
-    resourceIcon: {fileID: 4060313460776795396, guid: 384d0a0b1ca6d0744b69b8950c32b281, type: 3}
-    baseCost: 3
+  - resourceType: 0
+    resourceIcon: {fileID: -7618021496550400317, guid: cbc2ec93f799df84ea4b95b08cb0dcc7, type: 3}
+    baseCost: 5
     costIncrement: 5
   isUnlocked: 1
   isUnlockedByDefault: 0

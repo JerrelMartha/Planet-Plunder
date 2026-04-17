@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class ToggleUI : MonoBehaviour
 {
     [SerializeField] private GameObject toggledUI;
+    [SerializeField] private bool pauseGame;
 
     private bool activated = false;
     [SerializeField] private InputAction hotkey;
@@ -30,5 +31,10 @@ public class ToggleUI : MonoBehaviour
     {
         activated = !activated;
         toggledUI.SetActive(activated);
+
+        if (pauseGame)
+        {
+            Time.timeScale = activated ? 0f : 1f;
+        }
     }
 }

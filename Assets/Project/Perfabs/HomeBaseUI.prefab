@@ -693,11 +693,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 3
+      value: 3 / 3
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Increases Drill Size by 0.1.
+      value: Drill mining area increases.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
@@ -929,11 +929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 2
+      value: 2 / 2
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Upgrades Max Fuel by 5
+      value: You can stay longer on a planet.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
@@ -967,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
     - target: {fileID: 3927649324893354819, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_Name
-      value: Drill Speed II
+      value: Drill Attack Speed II
       objectReference: {fileID: 0}
     - target: {fileID: 5441138437605317810, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_Name
@@ -1055,15 +1055,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 5
+      value: 5 / 5
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Upgrades Drill Attack Speed by 0.5.
+      value: Increase the Drill mining speed.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Drill Speed II
+      value: Drill Attack Speed II
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1181,11 +1181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 3
+      value: 3 / 3
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Increases Drill Damage by 1.
+      value: Deal more damage to Tiles with the Drill.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
@@ -1219,7 +1219,7 @@ PrefabInstance:
       objectReference: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
     - target: {fileID: 3927649324893354819, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_Name
-      value: Drill Speed I
+      value: Drill Attack Speed I
       objectReference: {fileID: 0}
     - target: {fileID: 6210489379168503520, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_Pivot.x
@@ -1303,15 +1303,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 5
+      value: 5 / 5
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Upgrades Drill Attack Speed by 0.2.
+      value: Increase the Drill mining speed.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Drill Speed I
+      value: Drill Attack Speed I
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1425,11 +1425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 4
+      value: 4 / 4
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Increases Drill damage by 0.5.
+      value: Deal more damage to Tiles with the Drill.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
@@ -1551,11 +1551,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 1
+      value: 1 / 1
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 'Deals + 1.5 damage when hitting enemies with the Drill. '
+      value: Deal more damage to Enemies with the Drill.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
@@ -1589,7 +1589,7 @@ PrefabInstance:
       objectReference: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
     - target: {fileID: 3927649324893354819, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_Name
-      value: Drill Enemy Damage I
+      value: Drill Attack Speed III
       objectReference: {fileID: 0}
     - target: {fileID: 5441138437605317810, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_Name
@@ -1677,15 +1677,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537816463323346209, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: 0 / 3
+      value: 3 / 3
       objectReference: {fileID: 0}
     - target: {fileID: 9046902014619124206, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Upgrades Drill Attack Speed by 0.5.
+      value: Increase the Drill mining speed.
       objectReference: {fileID: 0}
     - target: {fileID: 9191532732624046082, guid: fc88c9c3156b53d4cae79f8d4e035728, type: 3}
       propertyPath: m_text
-      value: Drill Enemy Damage I
+      value: Drill Attack Speed III
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

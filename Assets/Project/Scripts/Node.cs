@@ -8,6 +8,13 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private NodeSO node;
 
+    [SerializeField] private Sprite visibleSprite;
+    [SerializeField] private Sprite maxedOutSprite;
+    [SerializeField] private Sprite offenseSprite;
+    [SerializeField] private Sprite mobilitySprite;
+    [SerializeField] private Sprite utilitySprite;
+    [SerializeField] private Sprite economySprite;
+
     private Image imageComponent;
     private Transform background;
     private Image backgroundImage;
@@ -41,7 +48,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             imageComponent = GetComponent<Image>();
             if (transform.parent != null) backgroundImage = transform.parent.GetComponent<Image>();
             imageComponent.sprite = node.upgradeIcon;
-            UpgradeTypeColorChange(node.upgradeType);
+            UpdateBackgroundVisuals();
         }
     }
 
@@ -55,7 +62,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void Start()
     {
         imageComponent.sprite = node.upgradeIcon;
-        UpgradeTypeColorChange(node.upgradeType);
+        UpdateBackgroundVisuals();
         UpdateNodeStatus();
     }
 
@@ -80,6 +87,8 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (prerequisitesMet)
         {
+            UpdateBackgroundVisuals();
+
             if (node.currentUpgradeAmount > 0)
             {
                 imageComponent.color = Color.white;
@@ -88,6 +97,48 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 imageComponent.color = new Color(0.5f, 0.5f, 0.5f, 1f);
             }
+        }
+    }
+
+    private void UpdateBackgroundVisuals()
+    {
+        if (backgroundImage == null) return;
+
+        if (IsMaxedOut() && maxedOutSprite != null)
+        {
+            backgroundImage.sprite = maxedOutSprite;
+            backgroundImage.color = Color.white;
+        }
+        else
+        {
+            SetBackgroundByType(node.upgradeType);
+
+            if (node.currentUpgradeAmount == 0)
+            {
+                backgroundImage.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+            }
+            else
+            {
+                backgroundImage.color = Color.white;
+            }
+        }
+    }
+
+    private void SetBackgroundByType(UpgradeType upgradeType)
+    {
+        Sprite targetSprite = visibleSprite;
+
+        switch (upgradeType)
+        {
+            case UpgradeType.Offense: targetSprite = offenseSprite; break;
+            case UpgradeType.Mobility: targetSprite = mobilitySprite; break;
+            case UpgradeType.Utility: targetSprite = utilitySprite; break;
+            case UpgradeType.Economy: targetSprite = economySprite; break;
+        }
+
+        if (targetSprite != null)
+        {
+            backgroundImage.sprite = targetSprite;
         }
     }
 
@@ -150,6 +201,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         node.isUnlocked = true;
         SaveSystem.SaveGame();
         SetupTooltip();
+        UpdateBackgroundVisuals();
     }
 
     public bool IsMaxedOut() => node.currentUpgradeAmount >= node.maxUpgrades;
@@ -157,18 +209,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool CanBuy()
     {
         return !IsMaxedOut() && CanAfford() && HasPrerequisites();
-    }
-
-    private void UpgradeTypeColorChange(UpgradeType upgradeType)
-    {
-        if (backgroundImage == null) return;
-        switch (upgradeType)
-        {
-            case UpgradeType.Offense: backgroundImage.color = Color.red; break;
-            case UpgradeType.Mobility: backgroundImage.color = Color.cyan; break;
-            case UpgradeType.Utility: backgroundImage.color = Color.green; break;
-            case UpgradeType.Economy: backgroundImage.color = Color.yellow; break;
-        }
     }
 
     private void SetupTooltip()
@@ -187,10 +227,8 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             float nextStatValue = currentStatValue + node.upgradeAdd;
-
             string currentFormatted = currentStatValue.ToString("F1");
             string nextFormatted = nextStatValue.ToString("F1");
-
             StatDisplay.text = $"{currentFormatted} > <color=#00FF00>{nextFormatted}</color>";
         }
 

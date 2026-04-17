@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Missile Attack Speed I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: MissileAttackSpeed_01
+  upgradeName: Missile Attack Speed
+  upgradeDescription: Makes Missile fire faster.
+  upgradeIcon: {fileID: 1711628538931111484, guid: 86e4c512a4bf45a498afe4d2b3327324, type: 3}
+  upgradeType: 0
+  statToUpgrade: 12
+  currentUpgradeAmount: 5
+  maxUpgrades: 8
+  upgradeAdd: 0.1
+  prerequisites:
+  - {fileID: 11400000, guid: 0cdf5fd20e5cf544986d488ccd6d4677, type: 2}
+  costs:
+  - resourceType: 2
+    resourceIcon: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
+    baseCost: 20
+    costIncrement: 5
+  isUnlocked: 1
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0

@@ -14,21 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: MoveSpeed_01
   upgradeName: Speed I
-  upgradeDescription: Adds 1 speed.
-  upgradeIcon: {fileID: 5926881962757455332, guid: 94cf489b4c6856d42ba18981e5a755bd, type: 3}
+  upgradeDescription: You can move faster.
+  upgradeIcon: {fileID: 7019206827932137109, guid: 332f3a09071ae9648b8cf9ee7d46b12b, type: 3}
   upgradeType: 1
   statToUpgrade: 0
-  currentUpgradeAmount: 5
-  maxUpgrades: 5
-  upgradeAdd: 1
+  currentUpgradeAmount: 1
+  maxUpgrades: 1
+  upgradeAdd: 2
   prerequisites:
-  - {fileID: 11400000, guid: a0eb57b58bba0374cbde97ae4b9d5ac6, type: 2}
+  - {fileID: 11400000, guid: 01674be81d9f46f408c9bc43b160fd66, type: 2}
   costs:
-  - resourceType: 2
+  - resourceType: 3
     resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
-    cost: 5
+    baseCost: 10
+    costIncrement: 0
   isUnlocked: 1
   isUnlockedByDefault: 0
   isVisible: 0
-  isPurchased: 1
-  isMaxedOut: 1
+  isPurchased: 0
+  isMaxedOut: 0

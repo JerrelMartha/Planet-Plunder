@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Missile Damage I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: MissileDamage_01
+  upgradeName: Missile Damage I
+  upgradeDescription: The Missile deals more damage against Tiles.
+  upgradeIcon: {fileID: 5244491956361251851, guid: d8ab112c96316134ab843222d0004f4d, type: 3}
+  upgradeType: 0
+  statToUpgrade: 11
+  currentUpgradeAmount: 0
+  maxUpgrades: 4
+  upgradeAdd: 5
+  prerequisites:
+  - {fileID: 11400000, guid: 0cdf5fd20e5cf544986d488ccd6d4677, type: 2}
+  costs:
+  - resourceType: 3
+    resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
+    baseCost: 20
+    costIncrement: 10
+  isUnlocked: 0
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0

@@ -9,4 +9,6 @@ public class ResourceTileSO : ScriptableObject
     public GameObject particles;
     public Color color;
     public float health;
+    public string destroyedSound;
+    public string hitSound;
 }

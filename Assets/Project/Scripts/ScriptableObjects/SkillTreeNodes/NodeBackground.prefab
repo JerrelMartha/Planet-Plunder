@@ -472,14 +472,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1873989382755255575, guid: 092b10a43c83fcd42be3d087f6599cdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -636,6 +636,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Node
   node: {fileID: 0}
+  visibleSprite: {fileID: 2898773284549948306, guid: e502270e219434547a6e17502872eff2, type: 3}
+  maxedOutSprite: {fileID: 5508160021595113818, guid: 3b1fb973c2cae4b4f98669a7e2524f02, type: 3}
+  offenseSprite: {fileID: 2898773284549948306, guid: 5ca02f875cab98a4c85165df19ecdd46, type: 3}
+  mobilitySprite: {fileID: 2898773284549948306, guid: fc581662ac522bc409396ef6f797d5f9, type: 3}
+  utilitySprite: {fileID: 2898773284549948306, guid: e03c06e73adc48648ae7535dabe25791, type: 3}
+  economySprite: {fileID: 2898773284549948306, guid: 882037b01196fb241a397ee32ca4ee14, type: 3}
   tooltip: {fileID: 6470397959908568588}
   statTooltip: {fileID: 9068019749627440461}
   upgradeName: {fileID: 9191532732624046082}

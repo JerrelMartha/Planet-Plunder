@@ -18,11 +18,15 @@ public class ResourceTile : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        SpawnParticles();
 
         if (health <= 0)
         {
             Die();
+            return;
         }
+
+        SoundManager.Instance.PlaySound(tileStats.hitSound, true);
 
         Color darkenedColor = tileStats.color * (55f / 255f);
 
@@ -30,14 +34,15 @@ public class ResourceTile : MonoBehaviour
 
         spriteRenderer.color = Color.Lerp(darkenedColor, tileStats.color, GetHealthNormalized());
 
-        SpawnParticles();
     }
 
     [ContextMenu("die")]
     private void Die()
     {
+        Fuel.instance.AddFuel(PlayerStats.instance.fuelSteal);
         GameObject droppedResource = Instantiate(tileStats.droppedResource, transform.position, Quaternion.identity);
         droppedResource.transform.parent = transform.parent; // Planet
+        SoundManager.Instance.PlaySound(tileStats.destroyedSound, true);
         Destroy(gameObject);
     }
 

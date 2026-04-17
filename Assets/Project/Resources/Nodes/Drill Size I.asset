@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: DrillSize_01
   upgradeName: Drill Size I
-  upgradeDescription: Increases Drill Size by 0.1.
+  upgradeDescription: Drill mining area increases.
   upgradeIcon: {fileID: -5130294652377279623, guid: 1b534fa39dcccfa418a56f123a0dafdb, type: 3}
   upgradeType: 0
   statToUpgrade: 7
-  currentUpgradeAmount: 0
+  currentUpgradeAmount: 3
   maxUpgrades: 3
   upgradeAdd: 0.1
   prerequisites:
@@ -32,7 +32,7 @@ MonoBehaviour:
     resourceIcon: {fileID: 4060313460776795396, guid: 384d0a0b1ca6d0744b69b8950c32b281, type: 3}
     baseCost: 5
     costIncrement: 5
-  isUnlocked: 0
+  isUnlocked: 1
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

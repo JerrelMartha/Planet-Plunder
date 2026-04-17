@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: DrillEnemyDamage_01
   upgradeName: Drill Enemy Damage I
-  upgradeDescription: 'Deals + 1.5 damage when hitting enemies with the Drill. '
+  upgradeDescription: Deal more damage to Enemies with the Drill.
   upgradeIcon: {fileID: -9041546000618029716, guid: b9e7e9393eff5ad4bae7ee214edd9524, type: 3}
   upgradeType: 0
   statToUpgrade: 16
   currentUpgradeAmount: 1
   maxUpgrades: 1
-  upgradeAdd: 0.5
+  upgradeAdd: 1.5
   prerequisites:
   - {fileID: 11400000, guid: c8941ff4adb143a449891544560b2cd6, type: 2}
   costs:
