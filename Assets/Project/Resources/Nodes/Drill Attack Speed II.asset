@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: DrillSpeed_02
   upgradeName: Drill Attack Speed II
   upgradeDescription: Increase the Drill mining speed.
-  upgradeIcon: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
+  upgradeIcon: {fileID: -5472809296932505403, guid: dee6b181add509d41a9c03f23bf3c0ad, type: 3}
   upgradeType: 0
   statToUpgrade: 8
   currentUpgradeAmount: 5

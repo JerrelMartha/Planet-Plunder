@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class Missile : Weapon
 {
-    private float missileArea;
+    protected float missileArea;
 
-
-    protected void Start()
+    protected virtual void Start()
     {
-        InitializeStats();  
+        InitializeStats();
     }
 
     protected override void Update()
@@ -17,12 +16,22 @@ public class Missile : Weapon
 
     public override void Fire()
     {
+        if (projectile == null || firepoint == null) return;
+
         GameObject obj = Instantiate(projectile, firepoint.position, firepoint.rotation);
         MissileProjectile missile = obj.GetComponent<MissileProjectile>();
 
-        missile.missileDamage = damage;
-        missile.missileSpeed = bulletSpeed;
-        missile.missileArea = missileArea;
+        if (missile != null)
+        {
+            missile.missileDamage = damage;
+            missile.missileSpeed = bulletSpeed;
+            missile.missileArea = missileArea;
+        }
+
+        if (Fuel.instance != null)
+        {
+            Fuel.instance.RemoveFuel(cost);
+        }
     }
 
     public void InitializeStats()
@@ -35,6 +44,5 @@ public class Missile : Weapon
             missileArea = PlayerStats.instance.missileArea;
             cost = PlayerStats.instance.missileCost;
         }
-
     }
 }

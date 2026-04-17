@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d154e7c44cff9f44184de31fdf141bf7, type: 3}
+  m_Name: UnlockClusterBomb
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponNodeSO
+  nodeID: UnlockClusterBomb
+  upgradeName: Cluster Bomb
+  upgradeDescription: Unlocks the Cluster Bomb Weapon..
+  upgradeIcon: {fileID: -5210685477381633103, guid: 42ce964e84f608d4dbbbbb4faa938296, type: 3}
+  upgradeType: 0
+  statToUpgrade: 0
+  currentUpgradeAmount: 0
+  maxUpgrades: 1
+  upgradeAdd: 0
+  prerequisites:
+  - {fileID: 11400000, guid: 87ebafef39fe9f34baa0d68dcf84bf11, type: 2}
+  costs:
+  - resourceType: 7
+    resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
+    baseCost: 1
+    costIncrement: 0
+  isUnlocked: 0
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0
+  weaponID: Cluster Bomb

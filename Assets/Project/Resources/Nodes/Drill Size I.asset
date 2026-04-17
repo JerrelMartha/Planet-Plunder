@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: DrillSize_01
   upgradeName: Drill Size I
   upgradeDescription: Drill mining area increases.
-  upgradeIcon: {fileID: -5130294652377279623, guid: 1b534fa39dcccfa418a56f123a0dafdb, type: 3}
+  upgradeIcon: {fileID: -2987297685707062221, guid: d43cb9fcc76e8e949a7b0e2395bf408a, type: 3}
   upgradeType: 0
   statToUpgrade: 7
   currentUpgradeAmount: 3

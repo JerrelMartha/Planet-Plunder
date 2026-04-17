@@ -55,6 +55,7 @@ public class Weapon : MonoBehaviour
         if (projectile != null && firepoint != null)
         {
             Fuel.instance.RemoveFuel(cost);
+            Debug.Log(cost);
             Instantiate(projectile, firepoint.position, firepoint.rotation);
         }
     }

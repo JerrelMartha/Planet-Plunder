@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: MaxFuel_01
   upgradeName: Max Fuel I
   upgradeDescription: You can stay longer on a planet.
-  upgradeIcon: {fileID: 1680126496735290735, guid: 86a6c1c052ea2934ba387b3ea6f2040e, type: 3}
+  upgradeIcon: {fileID: 5425551986851238155, guid: f7fd3955f316db64bb13f14ae1a39741, type: 3}
   upgradeType: 2
   statToUpgrade: 5
   currentUpgradeAmount: 2

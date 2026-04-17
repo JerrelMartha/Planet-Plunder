@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: MissileArea_01
   upgradeName: Missile Area I
   upgradeDescription: Missile Explosion Radius is bigger.
-  upgradeIcon: {fileID: 5244491956361251851, guid: d8ab112c96316134ab843222d0004f4d, type: 3}
+  upgradeIcon: {fileID: -2109757552703183393, guid: 172f07c65e7dafd4ebd1309ad545139a, type: 3}
   upgradeType: 0
   statToUpgrade: 14
   currentUpgradeAmount: 3

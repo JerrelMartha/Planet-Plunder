@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: UnlockMissile
   upgradeName: Missile
   upgradeDescription: Unlocks the Missile Weapon.
-  upgradeIcon: {fileID: 5091146171140590353, guid: 4da1f1d0bfa2f5646a672d12cb201c4a, type: 3}
+  upgradeIcon: {fileID: -9158349384845336690, guid: a7e7fd03dae0a154d95b5e9ee91ced39, type: 3}
   upgradeType: 0
   statToUpgrade: 0
   currentUpgradeAmount: 1

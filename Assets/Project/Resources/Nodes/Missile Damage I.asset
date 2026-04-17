@@ -15,10 +15,10 @@ MonoBehaviour:
   nodeID: MissileDamage_01
   upgradeName: Missile Damage I
   upgradeDescription: The Missile deals more damage against Tiles.
-  upgradeIcon: {fileID: 5244491956361251851, guid: d8ab112c96316134ab843222d0004f4d, type: 3}
+  upgradeIcon: {fileID: -9158349384845336690, guid: a7e7fd03dae0a154d95b5e9ee91ced39, type: 3}
   upgradeType: 0
   statToUpgrade: 11
-  currentUpgradeAmount: 0
+  currentUpgradeAmount: 4
   maxUpgrades: 4
   upgradeAdd: 5
   prerequisites:
@@ -26,9 +26,9 @@ MonoBehaviour:
   costs:
   - resourceType: 3
     resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
-    baseCost: 20
-    costIncrement: 10
-  isUnlocked: 0
+    baseCost: 10
+    costIncrement: 5
+  isUnlocked: 1
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: FuelSteal_01
   upgradeName: Fuel Steal I
   upgradeDescription: Gain Fuel when destroying a Tile.
-  upgradeIcon: {fileID: 244555147763918748, guid: aa0fd20595c6bc5408cd27bc55631b12, type: 3}
+  upgradeIcon: {fileID: 1090089254412738436, guid: 408ea35368d2ca64aa7da579c61a80dd, type: 3}
   upgradeType: 2
   statToUpgrade: 6
   currentUpgradeAmount: 1

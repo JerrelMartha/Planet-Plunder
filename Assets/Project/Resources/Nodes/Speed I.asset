@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: MoveSpeed_01
   upgradeName: Speed I
   upgradeDescription: You can move faster.
-  upgradeIcon: {fileID: 7019206827932137109, guid: 332f3a09071ae9648b8cf9ee7d46b12b, type: 3}
+  upgradeIcon: {fileID: -1518713475451153952, guid: f3052844ec28e4547a6b65b271315cfd, type: 3}
   upgradeType: 1
   statToUpgrade: 0
   currentUpgradeAmount: 1

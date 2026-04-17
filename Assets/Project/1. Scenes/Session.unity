@@ -1719,6 +1719,7 @@ MonoBehaviour:
   weaponUnlocked: 1
   weaponID: Cluster Bomb
   clusters: 3
+  spreadAngle: 15
 --- !u!4 &845144447
 Transform:
   m_ObjectHideFlags: 0
@@ -3460,6 +3461,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2475316770413359689, guid: 3b553e281f7d95a43b8b84f9f45b28b7, type: 3}
+      propertyPath: throttleTime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3575,7 +3580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   unlockedWeaponIDs:
   - Drill
-  - Cluster Bomb
 --- !u!4 &2120840146
 Transform:
   m_ObjectHideFlags: 0
@@ -3905,6 +3909,34 @@ PrefabInstance:
     - target: {fileID: 8368684831225879182, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
       propertyPath: resourceLayer.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 845144446}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TryFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ClusterBomb, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169932326760240964, guid: 5b8f5b9865d93c34da11695ec6a60b9d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

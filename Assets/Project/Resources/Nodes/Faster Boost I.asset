@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Faster Boost I
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: FasterBoost_01
+  upgradeName: Faster Boost I
+  upgradeDescription: Your Boost is more powerful.
+  upgradeIcon: {fileID: 4527640212340565753, guid: 02e482c6ec4823e499f95af819f9e8d6, type: 3}
+  upgradeType: 1
+  statToUpgrade: 2
+  currentUpgradeAmount: 1
+  maxUpgrades: 1
+  upgradeAdd: 0.25
+  prerequisites:
+  - {fileID: 11400000, guid: 01674be81d9f46f408c9bc43b160fd66, type: 2}
+  costs:
+  - resourceType: 3
+    resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
+    baseCost: 5
+    costIncrement: 0
+  - resourceType: 6
+    resourceIcon: {fileID: 8528324571735724621, guid: 988cef86d313a9d4fb9d68eb372c572e, type: 3}
+    baseCost: 1
+    costIncrement: 0
+  isUnlocked: 1
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0

@@ -198,6 +198,13 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             node.currentUpgradeAmount++;
         }
 
+        if (!IsMaxedOut())
+        {
+            SoundManager.Instance.PlaySound("NodeUpgrade", true);
+        } else
+        {
+            SoundManager.Instance.PlaySound("NodeMax");
+        }
         node.isUnlocked = true;
         SaveSystem.SaveGame();
         SetupTooltip();
@@ -232,7 +239,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             StatDisplay.text = $"{currentFormatted} > <color=#00FF00>{nextFormatted}</color>";
         }
 
-        Vector2[] positions = new Vector2[] { new Vector2(0, -125), new Vector2(-200, -125), new Vector2(200, -125) };
+        Vector2[] positions = new Vector2[] { new Vector2(0, -100), new Vector2(-200, -100), new Vector2(200, -100) };
 
         if (!costSpawned && Application.isPlaying)
         {

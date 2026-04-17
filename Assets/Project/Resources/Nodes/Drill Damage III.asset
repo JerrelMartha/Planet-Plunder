@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: DrillDamage_03
   upgradeName: Drill Damage III
   upgradeDescription: Deal more damage to Tiles with the Drill.
-  upgradeIcon: {fileID: -6506552428325161499, guid: 8d7c9ad3391a5634799821868753e446, type: 3}
+  upgradeIcon: {fileID: 7200369028553218417, guid: 3a6c636d55bc7d04288ea32cf9330fbb, type: 3}
   upgradeType: 0
   statToUpgrade: 9
   currentUpgradeAmount: 3

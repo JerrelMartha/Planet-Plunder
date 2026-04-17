@@ -15,10 +15,10 @@ MonoBehaviour:
   nodeID: DrillSpeed_03
   upgradeName: Drill Attack Speed III
   upgradeDescription: Increase the Drill mining speed.
-  upgradeIcon: {fileID: -3783514898903528425, guid: 78d6324f13b4109469d1623f97334f2d, type: 3}
+  upgradeIcon: {fileID: -5472809296932505403, guid: dee6b181add509d41a9c03f23bf3c0ad, type: 3}
   upgradeType: 0
   statToUpgrade: 8
-  currentUpgradeAmount: 0
+  currentUpgradeAmount: 3
   maxUpgrades: 3
   upgradeAdd: 1
   prerequisites:
@@ -28,7 +28,7 @@ MonoBehaviour:
     resourceIcon: {fileID: -7430558899833497709, guid: 31b11b64214335e4aa4696578328824d, type: 3}
     baseCost: 1
     costIncrement: 1
-  isUnlocked: 0
+  isUnlocked: 1
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

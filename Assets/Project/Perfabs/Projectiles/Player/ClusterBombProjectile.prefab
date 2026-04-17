@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae0604969842bd49a702b555ef3f0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClusterBombProjectile
-  missileArea: 0.01
+  missileArea: 0.5
   missileSpeed: 0
   missileDamage: 0
   particles: {fileID: 4792344719497740027, guid: 1c51b5622fa0cc54187bfe35dbc82d49, type: 3}
@@ -178,3 +178,5 @@ MonoBehaviour:
     m_Bits: 64
   clusterPrefab: {fileID: 5371735688781694534, guid: ff0f81560115dc643aafc30a9827e112, type: 3}
   clusterAmount: 5
+  spreadAngle: 90
+  speedMultiplier: 0.3

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4071349309237381824}
   - component: {fileID: 4803450959351174370}
   - component: {fileID: 1886343110970838239}
-  - component: {fileID: 2703321451590018335}
+  - component: {fileID: 5030620894071936125}
   m_Layer: 7
   m_Name: ClusterProjectile
   m_TagString: Untagged
@@ -157,7 +157,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &2703321451590018335
+--- !u!114 &5030620894071936125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e701916389d55bf44b130de506377f90, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::MissileProjectile
   missileArea: 0
   missileSpeed: 0
   missileDamage: 0

@@ -3,8 +3,8 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum Stats 
-{ 
+public enum Stats
+{
     MoveSpeed,
     DashForce,
     BoostMult,
@@ -23,6 +23,11 @@ public enum Stats
     MissileEnemyDamage,
     DrillEnemyDamage,
     MissileCost,
+    // New Cluster Stats
+    ClusterDamage,
+    ClusterBombDamage,
+    ClusterAmount,
+    ClusterBombAttackSpeed
 }
 
 public class PlayerStats : MonoBehaviour
@@ -35,7 +40,6 @@ public class PlayerStats : MonoBehaviour
     public float boostMultiplier = 1.5f;
     public float dashCooldown = 2f;
     public float dashCost = 1f;
-
 
     [Header("Fuel")]
     public float maxFuel = 10f;
@@ -55,10 +59,16 @@ public class PlayerStats : MonoBehaviour
     public float missileEnemyDamage = 20f;
     public float missileCost = 2f;
 
+    [Header("Cluster")]
+    public float clusterDamage = 5f;
+    public float clusterBombDamage = 8f;
+    public float clusterAmount = 3f;
+    public float clusterBombAttackSpeed = 1f;
+
     [Header("Collection")]
     public float collectionRange = 1.5f;
 
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -70,7 +80,6 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     void Update()
@@ -79,72 +88,37 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("Manual Load Triggered via New Input System...");
             SaveSystem.LoadGame();
-
-            // Log the value immediately to see if it changed
             Debug.Log($"Current moveSpeed: {moveSpeed}");
         }
     }
-
-
 
     public void IncreaseStat(Stats stats, float amount)
     {
         switch (stats)
         {
-            case Stats.MoveSpeed:
-                moveSpeed += amount;
-                break;
-            case Stats.DashForce:
-                dashForce += amount;
-                break;
-            case Stats.BoostMult:
-                boostMultiplier += amount;
-                break;
-            case Stats.DashCooldown:
-                dashCooldown += amount;
-                break;
-            case Stats.DashCost:
-                dashCost += amount;
-                break;
-            case Stats.MaxFuel:
-                maxFuel += amount;
-                break;
-            case Stats.FuelSteal:
-                fuelSteal += amount;
-                break;
-            case Stats.DrillRadius:
-                drillRadius += amount;
-                break;
-            case Stats.DrillAttackSpeed:
-                drillAttackSpeed += amount;
-                break;
-            case Stats.DrillDamage:
-                drillDamage += amount;
-                break;
-            case Stats.CollectionRange:
-                collectionRange += amount;
-                break;
-            case Stats.MissileDamage:
-                missileDamage += amount;
-                break;
-            case Stats.MissileAttackSpeed:
-                missileAttackSpeed += amount;
-                break;
-            case Stats.MissileBulletSpeed:
-                missileBulletSpeed += amount;
-                break;
-            case Stats.MissileArea:
-                missileArea += amount;
-                break;
-            case Stats.DrillEnemyDamage:
-                drillEnemyDamage += amount;
-                break;
-            case Stats.MissileEnemyDamage:
-                missileEnemyDamage += amount;
-                break;
-            case Stats.MissileCost:
-                missileCost += amount;
-                break;
+            case Stats.MoveSpeed: moveSpeed += amount; break;
+            case Stats.DashForce: dashForce += amount; break;
+            case Stats.BoostMult: boostMultiplier += amount; break;
+            case Stats.DashCooldown: dashCooldown += amount; break;
+            case Stats.DashCost: dashCost += amount; break;
+            case Stats.MaxFuel: maxFuel += amount; break;
+            case Stats.FuelSteal: fuelSteal += amount; break;
+            case Stats.DrillRadius: drillRadius += amount; break;
+            case Stats.DrillAttackSpeed: drillAttackSpeed += amount; break;
+            case Stats.DrillDamage: drillDamage += amount; break;
+            case Stats.CollectionRange: collectionRange += amount; break;
+            case Stats.MissileDamage: missileDamage += amount; break;
+            case Stats.MissileAttackSpeed: missileAttackSpeed += amount; break;
+            case Stats.MissileBulletSpeed: missileBulletSpeed += amount; break;
+            case Stats.MissileArea: missileArea += amount; break;
+            case Stats.DrillEnemyDamage: drillEnemyDamage += amount; break;
+            case Stats.MissileEnemyDamage: missileEnemyDamage += amount; break;
+            case Stats.MissileCost: missileCost += amount; break;
+            // New Cluster Cases
+            case Stats.ClusterDamage: clusterDamage += amount; break;
+            case Stats.ClusterBombDamage: clusterBombDamage += amount; break;
+            case Stats.ClusterAmount: clusterAmount += amount; break;
+            case Stats.ClusterBombAttackSpeed: clusterBombAttackSpeed += amount; break;
             default:
                 Debug.LogWarning("Stat does not exist");
                 break;
@@ -155,32 +129,34 @@ public class PlayerStats : MonoBehaviour
 
     public float GetStatValue(Stats stats)
     {
-        switch (stats)
+        return stats switch
         {
-            case Stats.MoveSpeed: return moveSpeed;
-            case Stats.DashForce: return dashForce;
-            case Stats.BoostMult: return boostMultiplier;
-            case Stats.DashCooldown: return dashCooldown;
-            case Stats.DashCost: return dashCost;
-            case Stats.MaxFuel: return maxFuel;
-            case Stats.FuelSteal: return fuelSteal;
-            case Stats.DrillRadius: return drillRadius;
-            case Stats.DrillAttackSpeed: return drillAttackSpeed;
-            case Stats.DrillDamage: return drillDamage;
-            case Stats.CollectionRange: return collectionRange;
-            case Stats.MissileDamage: return missileDamage;
-            case Stats.MissileAttackSpeed: return missileAttackSpeed;
-            case Stats.MissileBulletSpeed: return missileBulletSpeed;
-            case Stats.MissileArea: return missileArea;
-            case Stats.DrillEnemyDamage: return drillEnemyDamage;
-            case Stats.MissileEnemyDamage: return missileEnemyDamage;
-            case Stats.MissileCost: return missileCost;
-            default:
-                Debug.LogWarning("Stat does not exist");
-                return 0;
-        }
+            Stats.MoveSpeed => moveSpeed,
+            Stats.DashForce => dashForce,
+            Stats.BoostMult => boostMultiplier,
+            Stats.DashCooldown => dashCooldown,
+            Stats.DashCost => dashCost,
+            Stats.MaxFuel => maxFuel,
+            Stats.FuelSteal => fuelSteal,
+            Stats.DrillRadius => drillRadius,
+            Stats.DrillAttackSpeed => drillAttackSpeed,
+            Stats.DrillDamage => drillDamage,
+            Stats.CollectionRange => collectionRange,
+            Stats.MissileDamage => missileDamage,
+            Stats.MissileAttackSpeed => missileAttackSpeed,
+            Stats.MissileBulletSpeed => missileBulletSpeed,
+            Stats.MissileArea => missileArea,
+            Stats.DrillEnemyDamage => drillEnemyDamage,
+            Stats.MissileEnemyDamage => missileEnemyDamage,
+            Stats.MissileCost => missileCost,
+            // New Cluster Cases
+            Stats.ClusterDamage => clusterDamage,
+            Stats.ClusterBombDamage => clusterBombDamage,
+            Stats.ClusterAmount => clusterAmount,
+            Stats.ClusterBombAttackSpeed => clusterBombAttackSpeed,
+            _ => 0
+        };
     }
-
 
     public void SaveData(ref StatSaveData data)
     {
@@ -200,6 +176,11 @@ public class PlayerStats : MonoBehaviour
         data.missileArea = missileArea;
         data.collectionRange = collectionRange;
         data.missileCost = missileCost;
+        // Save new stats
+        data.clusterDamage = clusterDamage;
+        data.clusterBombDamage = clusterBombDamage;
+        data.clusterAmount = clusterAmount;
+        data.clusterBombAttackSpeed = clusterBombAttackSpeed;
     }
 
     public void LoadData(StatSaveData data)
@@ -220,6 +201,11 @@ public class PlayerStats : MonoBehaviour
         this.missileArea = data.missileArea;
         this.collectionRange = data.collectionRange;
         this.missileCost = data.missileCost;
+        // Load new stats
+        this.clusterDamage = data.clusterDamage;
+        this.clusterBombDamage = data.clusterBombDamage;
+        this.clusterAmount = data.clusterAmount;
+        this.clusterBombAttackSpeed = data.clusterBombAttackSpeed;
     }
 
     [System.Serializable]
@@ -230,5 +216,7 @@ public class PlayerStats : MonoBehaviour
         public float drillRadius, drillAttackSpeed, drillDamage;
         public float missileDamage, missileAttackSpeed, missileBulletSpeed, missileArea, missileCost;
         public float collectionRange;
+        // New save fields
+        public float clusterDamage, clusterBombDamage, clusterAmount, clusterBombAttackSpeed;
     }
 }

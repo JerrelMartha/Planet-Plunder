@@ -1854,8 +1854,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2475316770413359689, guid: 3b553e281f7d95a43b8b84f9f45b28b7, type: 3}
-      propertyPath: throttleTime
-      value: 0.001
+      propertyPath: soundLibrary.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475316770413359689, guid: 3b553e281f7d95a43b8b84f9f45b28b7, type: 3}
+      propertyPath: soundLibrary.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 505643ef5014e2542b20906886bb77f9, type: 3}
+    - target: {fileID: 2475316770413359689, guid: 3b553e281f7d95a43b8b84f9f45b28b7, type: 3}
+      propertyPath: soundLibrary.Array.data[10].name
+      value: NodeUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475316770413359689, guid: 3b553e281f7d95a43b8b84f9f45b28b7, type: 3}
+      propertyPath: soundLibrary.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b59e1b691de976b45894c9c94b589509, type: 3}
+    - target: {fileID: 2475316770413359689, guid: 3b553e281f7d95a43b8b84f9f45b28b7, type: 3}
+      propertyPath: soundLibrary.Array.data[11].name
+      value: NodeMax
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

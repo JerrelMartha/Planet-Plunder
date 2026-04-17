@@ -15,7 +15,7 @@ MonoBehaviour:
   nodeID: CollectionRange_01
   upgradeName: Collection Range I
   upgradeDescription: Pick up items from further away.
-  upgradeIcon: {fileID: 8309296842023204059, guid: 1ab38c53a4af61a44970d7849148a474, type: 3}
+  upgradeIcon: {fileID: 3414701089094172137, guid: 0e376d2d9eaa2f2469a42bde5cba9036, type: 3}
   upgradeType: 2
   statToUpgrade: 10
   currentUpgradeAmount: 4
