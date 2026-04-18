@@ -4,42 +4,40 @@ public class ClusterBombProjectile : MissileProjectile
 {
     [Header("Cluster Settings")]
     [SerializeField] private GameObject clusterPrefab;
-    [SerializeField] private int clusterAmount = 5;
-    [SerializeField] private float spreadAngle = 45f;
+    [SerializeField] public int clusterAmount = 5;
     [SerializeField] private float speedMultiplier = 1.2f;
+    [SerializeField] private bool canSpawnClusters = true;
 
     protected override void Die()
     {
-        SpawnClusters();
+        if (canSpawnClusters)
+        {
+            SpawnClusters();
+        }
         base.Die();
     }
 
     private void SpawnClusters()
     {
-        Vector2 travelDirection = transform.up;
-        float startAngle = -spreadAngle / 2f;
-        float angleStep = clusterAmount > 1 ? spreadAngle / (clusterAmount - 1) : 0;
-
         for (int i = 0; i < clusterAmount; i++)
         {
-            float currentAngle = startAngle + (angleStep * i);
-            Quaternion rotation = Quaternion.Euler(0, 0, currentAngle);
-            Vector2 finalDirection = rotation * travelDirection;
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            GameObject cluster = Instantiate(clusterPrefab, transform.position, Quaternion.identity);
 
-            GameObject cluster = Instantiate(clusterPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, finalDirection));
-
-            MissileProjectile clusterScript = cluster.GetComponent<MissileProjectile>();
-            if (clusterScript != null)
+            if (cluster.TryGetComponent(out ClusterBombProjectile clusterScript))
             {
+                clusterScript.canSpawnClusters = false;
                 clusterScript.missileDamage = missileDamage / 2f;
                 clusterScript.missileSpeed = missileSpeed * speedMultiplier;
                 clusterScript.missileArea = missileArea;
+                clusterScript.SetDirection(randomDirection);
             }
-
-            Rigidbody2D rb = cluster.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            else if (cluster.TryGetComponent(out MissileProjectile baseScript))
             {
-                rb.linearVelocity = finalDirection * (missileSpeed * speedMultiplier);
+                baseScript.missileDamage = missileDamage / 2f;
+                baseScript.missileSpeed = missileSpeed * speedMultiplier;
+                baseScript.missileArea = missileArea;
+                baseScript.SetDirection(randomDirection);
             }
         }
     }

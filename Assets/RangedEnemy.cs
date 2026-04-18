@@ -3,7 +3,7 @@ using UnityEngine;
 public class RangedEnemy : Enemy
 {
     [SerializeField] private GameObject projectile;
-    [SerializeField] private float attackSpeed = 1.5f; // Time between shots
+    [SerializeField] private float attackSpeed = 1.5f;
     [SerializeField] private Transform firePoint;
 
     private float lastAttackTime;
@@ -40,7 +40,11 @@ public class RangedEnemy : Enemy
     private void Shoot()
     {
         Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
-        GameObject obj = Instantiate(projectile, spawnPos, Quaternion.identity);
+        Vector3 direction = (player.position - spawnPos).normalized;
+
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        GameObject obj = Instantiate(projectile, spawnPos, rotation);
         Destroy(obj, 2f);
     }
 }

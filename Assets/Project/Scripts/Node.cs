@@ -223,19 +223,22 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         upgradeName.text = node.upgradeName;
         upgradeDescription.text = node.upgradeDescription;
         upgradeAmount.text = $"{node.currentUpgradeAmount} / {node.maxUpgrades}";
-        StatName.text = node.statToUpgrade.ToString();
 
-        float currentStatValue = PlayerStats.instance.GetStatValue(node.statToUpgrade);
-
-        if (IsMaxedOut())
+        if (node is WeaponNodeSO || IsMaxedOut())
         {
             statTooltip.SetActive(false);
         }
         else
         {
+            statTooltip.SetActive(true);
+            StatName.text = node.statToUpgrade.ToString();
+
+            float currentStatValue = PlayerStats.instance.GetStatValue(node.statToUpgrade);
             float nextStatValue = currentStatValue + node.upgradeAdd;
+
             string currentFormatted = currentStatValue.ToString("F1");
             string nextFormatted = nextStatValue.ToString("F1");
+
             StatDisplay.text = $"{currentFormatted} > <color=#00FF00>{nextFormatted}</color>";
         }
 
@@ -250,7 +253,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
         }
         UpdateAllCostVisuals();
-    }
+    }   
 
     private void CreateCostUI(Vector2 position, CostData costData)
     {

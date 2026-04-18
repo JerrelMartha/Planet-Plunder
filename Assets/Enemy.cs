@@ -83,4 +83,9 @@ public abstract class Enemy : MonoBehaviour
     {
         Instantiate(droppedResource, transform.position, Quaternion.identity);
     }
+
+    public float GetHealthNormalized()
+    {
+        return health / maxHealth;
+    }
 }

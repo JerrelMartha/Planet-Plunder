@@ -66,7 +66,7 @@ public class Fuel : MonoBehaviour
     private void OnOutOfFuel()
     {
         if (isGameOver) return;
-
+        SaveSystem.SaveGame();
         isGameOver = true;
         Time.timeScale = 0f;
         Instantiate(endScreen);

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1023100922930526092}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 0, z: 0}
+  m_LocalPosition: {x: -0.004, y: -0.686, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,17 +106,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drill
   damage: 1
   bulletSpeed: 0
+  cost: 0
   attackSpeed: 5
   projectile: {fileID: 0}
   firepoint: {fileID: 5142225626487193091}
+  weaponUnlocked: 1
+  weaponID: Drill
   drillEnemyDamage: 0.5
   drillRadius: 0.2
   offset: 5
   resourceLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  bossLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   BuffedDrillActive: 0
-  weaponActive: 1
 --- !u!1 &1929123424378384497
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c457c242cd7e78c4a915637e76255a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectionRange
-  range: 3
+  range: 5
   pullStrength: 5
-  resourceLayer: 3
+  resourceLayer:
+    serializedVersion: 2
+    m_Bits: 8
   updateRangePerFrame: 1
 --- !u!58 &7947242374430961649
 CircleCollider2D:
@@ -220,6 +230,8 @@ GameObject:
   - component: {fileID: 8748935892285874662}
   - component: {fileID: 3417471554505167173}
   - component: {fileID: 7618916455409652010}
+  - component: {fileID: 6026672348236736146}
+  - component: {fileID: 5550606681930841026}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -243,6 +255,7 @@ Transform:
   - {fileID: 5142225626487193091}
   - {fileID: 4540596914863498369}
   - {fileID: 5616295422895908429}
+  - {fileID: 1639082171395944895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2311573735343584956
@@ -294,7 +307,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -7983310150787973331, guid: 5807d854c9491304cb628a8116e1f20e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -384,6 +397,7 @@ MonoBehaviour:
   dashForce: 1.1
   dashCooldown: 2
   dashCost: 1
+  boostPrt: {fileID: 0}
 --- !u!114 &122725063181961206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +558,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7993543957333875748}
+        m_TargetAssemblyTypeName: ClusterBomb, Assembly-CSharp
+        m_MethodName: TryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d7807a23-bf81-4ba5-8320-aef617e55013
     m_ActionName: 'Player/Fire[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -590,6 +616,178 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9889563d050f5cd459c94926aaab3773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &6026672348236736146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536204192055280453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f32b5d1564a6d245b06c5d8f56836d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  weaponSlot1: {fileID: 1067606379100153966}
+  weaponSlot2: {fileID: 201998864332954738}
+  weaponSlot3: {fileID: 7993543957333875748}
+  activeWeapon1:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Active Weapon 1
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 73cbdb8a-fc01-4a54-ac32-0be91971c050
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: ee254591-8cf3-428f-a6c8-500c02a73da6
+        m_Path: <Keyboard>/1
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Active Weapon 1
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  activeWeapon2:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Active Weapon 2
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f618baa4-b944-46cc-bfee-ae538a47f9ab
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 6eab59ad-cba5-422d-b829-e34bbe846080
+        m_Path: <Keyboard>/2
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Active Weapon 2
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  activeWeapon3:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Active Weapon 3
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 741a3851-f9e2-4784-b46a-8c7c9c3c444d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e01a516a-8e4e-43c3-b871-b90540b716d3
+        m_Path: <Keyboard>/3
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Active Weapon 3
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+--- !u!82 &5550606681930841026
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536204192055280453}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5999448196054695865
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +814,7 @@ Transform:
   m_GameObject: {fileID: 5999448196054695865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.978, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -636,7 +834,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   damage: 0
   bulletSpeed: 0
+  cost: 0
   attackSpeed: 0
-  projectile: {fileID: 5371735688781694534, guid: 2f86a42417669af4cae50ef66e13ce3e, type: 3}
+  projectile: {fileID: 5371735688781694534, guid: 96a9a8b6495a29248a2e4dcd36913825, type: 3}
   firepoint: {fileID: 5616295422895908429}
-  weaponActive: 1
+  weaponUnlocked: 0
+  weaponID: Missile
+--- !u!1 &9222481494134705711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1639082171395944895}
+  - component: {fileID: 7993543957333875748}
+  m_Layer: 0
+  m_Name: Cluster Bomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1639082171395944895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222481494134705711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5041261646858974740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7993543957333875748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222481494134705711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f51a030371b4842b5fff0dbbcbab42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  damage: 0
+  bulletSpeed: 0
+  cost: 5
+  attackSpeed: 0
+  projectile: {fileID: 5371735688781694534, guid: f3db5b9254abe5043b99f0a5f56846b0, type: 3}
+  firepoint: {fileID: 1639082171395944895}
+  weaponUnlocked: 1
+  weaponID: Cluster Bomb
+  clusters: 3

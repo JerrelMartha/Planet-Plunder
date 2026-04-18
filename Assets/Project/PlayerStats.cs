@@ -219,4 +219,30 @@ public class PlayerStats : MonoBehaviour
         // New save fields
         public float clusterDamage, clusterBombDamage, clusterAmount, clusterBombAttackSpeed;
     }
+
+    public void ResetToDefaults()
+    {
+        moveSpeed = 5f;
+        dashForce = 2f;
+        boostMultiplier = 1.5f;
+        dashCooldown = 2f;
+        dashCost = 1f;
+        maxFuel = 20f;
+        fuelSteal = 0f;
+        drillRadius = 0.2f;
+        drillAttackSpeed = 5f;
+        drillDamage = 1f;
+        drillEnemyDamage = 0.5f;
+        missileDamage = 20f;
+        missileAttackSpeed = 0.7f;
+        missileBulletSpeed = 5f;
+        missileArea = 1f;
+        missileEnemyDamage = 20f;
+        missileCost = 2f;
+        clusterDamage = 20f;
+        clusterBombDamage = 20f;
+        clusterAmount = 3f;
+        clusterBombAttackSpeed = 1f;
+        collectionRange = 3f;
+    }
 }

@@ -24,9 +24,9 @@ MonoBehaviour:
   prerequisites:
   - {fileID: 11400000, guid: 87ebafef39fe9f34baa0d68dcf84bf11, type: 2}
   costs:
-  - resourceType: 7
-    resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}
-    baseCost: 1
+  - resourceType: 4
+    resourceIcon: {fileID: -5817558424466443108, guid: 27e62a6ada837a740b5180517b2f42e1, type: 3}
+    baseCost: 30
     costIncrement: 0
   isUnlocked: 0
   isUnlockedByDefault: 0

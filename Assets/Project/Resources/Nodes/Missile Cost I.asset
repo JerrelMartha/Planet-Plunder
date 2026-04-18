@@ -18,7 +18,7 @@ MonoBehaviour:
   upgradeIcon: {fileID: -9158349384845336690, guid: a7e7fd03dae0a154d95b5e9ee91ced39, type: 3}
   upgradeType: 0
   statToUpgrade: 17
-  currentUpgradeAmount: 4
+  currentUpgradeAmount: 0
   maxUpgrades: 4
   upgradeAdd: -0.25
   prerequisites:
@@ -27,12 +27,12 @@ MonoBehaviour:
   - resourceType: 5
     resourceIcon: {fileID: -7430558899833497709, guid: 31b11b64214335e4aa4696578328824d, type: 3}
     baseCost: 5
-    costIncrement: 3
+    costIncrement: 2
   - resourceType: 4
     resourceIcon: {fileID: -5817558424466443108, guid: 27e62a6ada837a740b5180517b2f42e1, type: 3}
     baseCost: 5
     costIncrement: 5
-  isUnlocked: 1
+  isUnlocked: 0
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

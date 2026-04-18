@@ -131,4 +131,10 @@ public class PlayerResources : MonoBehaviour
             AddResource(res, 9999f);
         }
     }
+
+    public void ResetToDefaults()
+    {
+        resourceInventory.Clear();
+        temporaryInventory.Clear();
+    }
 }

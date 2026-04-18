@@ -10,8 +10,8 @@ public class MissileProjectile : MonoBehaviour
     [SerializeField] private GameObject particles;
     [SerializeField] private LayerMask tileLayer;
 
-    private Vector2 direction;
-    private Rigidbody2D rb;
+    protected Vector2 direction;
+    protected Rigidbody2D rb;
 
     private void Awake()
     {
@@ -21,10 +21,19 @@ public class MissileProjectile : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Expire(missileLifetime));
-        Vector2 targetPos = HelperFunctions.GetMouseWorldPosition();
-        direction = (targetPos - (Vector2)transform.position).normalized;
+
+        if (direction == Vector2.zero)
+        {
+            Vector2 targetPos = HelperFunctions.GetMouseWorldPosition();
+            SetDirection((targetPos - (Vector2)transform.position).normalized);
+        }
+    }
+
+    public void SetDirection(Vector2 newDirection)
+    {
+        direction = newDirection.normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
     }
 
     private void FixedUpdate()
@@ -57,6 +66,7 @@ public class MissileProjectile : MonoBehaviour
                 tile.TakeDamage(missileDamage);
             }
         }
+
         SoundManager.Instance.PlaySound("Explode", true);
         SpawnParticles();
         Destroy(gameObject);

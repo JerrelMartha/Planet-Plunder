@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.834, y: 0.64, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 3855224603912187139, guid: b85c237c1c8d7254c92552d1a1961a81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,7 +109,7 @@ Rigidbody2D:
   m_Mass: 0.01
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -156,7 +156,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.2
 --- !u!114 &4861169839975498446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClusterBombProjectile
   missileArea: 0.5
-  missileSpeed: 0
+  missileSpeed: 1
   missileDamage: 0
   particles: {fileID: 4792344719497740027, guid: 1c51b5622fa0cc54187bfe35dbc82d49, type: 3}
   tileLayer:
@@ -178,5 +178,5 @@ MonoBehaviour:
     m_Bits: 64
   clusterPrefab: {fileID: 5371735688781694534, guid: ff0f81560115dc643aafc30a9827e112, type: 3}
   clusterAmount: 5
-  spreadAngle: 90
-  speedMultiplier: 0.3
+  speedMultiplier: 0.6
+  canSpawnClusters: 1

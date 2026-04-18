@@ -54,4 +54,9 @@ public class WeaponManager : MonoBehaviour
             Debug.Log($"Loaded {unlockedWeaponIDs.Count} weapons from save.");
         }
     }
+
+    public void ResetToDefaults()
+    {
+        unlockedWeaponIDs.Clear();
+    }
 }

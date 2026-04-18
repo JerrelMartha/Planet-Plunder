@@ -64,6 +64,26 @@ public static class SaveSystem
         {
             File.Delete(savePath);
         }
+
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.ResetAllNodes();
+        }
+
+        if (PlayerStats.instance != null)
+        {
+            PlayerStats.instance.ResetToDefaults();
+        }
+
+        if (PlayerResources.instance != null)
+        {
+            PlayerResources.instance.ResetToDefaults();
+        }
+
+        if (WeaponManager.instance != null)
+        {
+            WeaponManager.instance.ResetToDefaults();
+        }
     }
 
     [System.Serializable]

@@ -22,7 +22,7 @@ MonoBehaviour:
   maxUpgrades: 1
   upgradeAdd: 0
   prerequisites:
-  - {fileID: 11400000, guid: 28306292d3465944e951896b66c95754, type: 2}
+  - {fileID: 11400000, guid: 9e695084556ebf14396884c344ebeca5, type: 2}
   costs:
   - resourceType: 3
     resourceIcon: {fileID: -338012550382651996, guid: 682fab496c1cc9a41875f754d022d4bf, type: 3}

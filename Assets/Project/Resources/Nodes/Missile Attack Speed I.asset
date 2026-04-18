@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Missile Attack Speed I
   m_EditorClassIdentifier: Assembly-CSharp::NodeSO
   nodeID: MissileAttackSpeed_01
-  upgradeName: Missile Attack Speed
+  upgradeName: Missile Attack Speed I
   upgradeDescription: Makes Missile fire faster.
   upgradeIcon: {fileID: 2644169188596363561, guid: 23ec082524321d84ca823eac7ded82c2, type: 3}
   upgradeType: 0
   statToUpgrade: 12
-  currentUpgradeAmount: 8
+  currentUpgradeAmount: 0
   maxUpgrades: 8
   upgradeAdd: 0.1
   prerequisites:
@@ -28,7 +28,7 @@ MonoBehaviour:
     resourceIcon: {fileID: -7788111296561802320, guid: 5786bbff96defe04e870a7eb3988e6a7, type: 3}
     baseCost: 10
     costIncrement: 3
-  isUnlocked: 1
+  isUnlocked: 0
   isUnlockedByDefault: 0
   isVisible: 0
   isPurchased: 0

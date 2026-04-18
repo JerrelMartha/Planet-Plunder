@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Collection Range III
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: CollectionRange_03
+  upgradeName: Collection Range III
+  upgradeDescription: Pick up items from further away.
+  upgradeIcon: {fileID: 3414701089094172137, guid: 0e376d2d9eaa2f2469a42bde5cba9036, type: 3}
+  upgradeType: 2
+  statToUpgrade: 10
+  currentUpgradeAmount: 2
+  maxUpgrades: 2
+  upgradeAdd: 5
+  prerequisites:
+  - {fileID: 11400000, guid: caccc9ef242792a4ba86cc5b77dbc5b7, type: 2}
+  costs:
+  - resourceType: 4
+    resourceIcon: {fileID: -5817558424466443108, guid: 27e62a6ada837a740b5180517b2f42e1, type: 3}
+    baseCost: 10
+    costIncrement: 10
+  isUnlocked: 1
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0

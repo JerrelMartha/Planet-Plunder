@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
         AutoSave();
 
         if (Keyboard.current.pKey.wasPressedThisFrame) Save();
-        if (Keyboard.current.qKey.wasPressedThisFrame) DeleteSave();
     }
 
     private void AutoSave()
@@ -65,15 +64,23 @@ public class GameManager : MonoBehaviour
     public void DeleteSave()
     {
         SaveSystem.DeleteSave();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit(); 
-#endif
+
         foreach (var node in allNodes)
         {
             node.Reset();
         }
+    }
+
+    public void ResetAllNodes()
+    {
+        NodeSO[] allNodes = Resources.LoadAll<NodeSO>("");
+
+        foreach (NodeSO node in allNodes)
+        {
+            node.Reset();
+        }
+
+        Debug.Log($"Reset {allNodes.Length} nodes to default values.");
     }
 
 

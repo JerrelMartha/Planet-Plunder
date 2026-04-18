@@ -1,24 +1,24 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private float moveSpeed;
-    [Space]
     [SerializeField] private float boostMultiplier;
-    [Space]
     [SerializeField] private float dashForce = 4f;
     [SerializeField] private float dashCooldown = 2f;
     [SerializeField] private float dashCost = 1f;
 
     [Header("References")]
     private Rigidbody2D rb;
+    private AudioSource audioSource;
     private Vector2 moveDirection;
     private Vector2 lookDirection;
+    [SerializeField] private ParticleSystem boostPrt;
 
     [Header("Booleans")]
     private bool isBoosting = false;
@@ -26,12 +26,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         InitializeStats();
+
+        if (boostPrt != null)
+        {
+            boostPrt.Stop();
+        }
+
+        if (audioSource != null)
+        {
+            audioSource.loop = true;
+            audioSource.playOnAwake = false;
+            audioSource.Stop();
+        }
     }
 
     private void Update()
@@ -43,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         float speedToAdd = isBoosting ? moveSpeed * boostMultiplier : moveSpeed;
-
         rb.AddForce(moveDirection * speedToAdd);
     }
 
@@ -54,7 +66,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnBoost(InputAction.CallbackContext ctx)
     {
-        isBoosting = ctx.performed;
+        if (ctx.performed)
+        {
+            isBoosting = true;
+            if (boostPrt != null) boostPrt.Play();
+            if (audioSource != null && !audioSource.isPlaying) audioSource.Play();
+        }
+        else if (ctx.canceled)
+        {
+            isBoosting = false;
+            if (boostPrt != null) boostPrt.Stop();
+            if (audioSource != null) audioSource.Stop();
+        }
     }
 
     public void OnDash(InputAction.CallbackContext ctx)
@@ -63,13 +86,13 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
-
     }
 
     private IEnumerator Dash()
     {
         rb.linearVelocity = (lookDirection * moveSpeed * dashForce);
         Fuel.instance.RemoveFuel(dashCost);
+        SoundManager.Instance.PlaySound("Dash", true);
 
         canDash = false;
         yield return new WaitForSeconds(dashCooldown);

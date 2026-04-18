@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d154e7c44cff9f44184de31fdf141bf7, type: 3}
+  m_Name: Victory
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponNodeSO
+  nodeID: Victory
+  upgradeName: Victory
+  upgradeDescription: Beat the game.
+  upgradeIcon: {fileID: -5806429548128397179, guid: 40a7ba8896c10c644b6274a6bee3a794, type: 3}
+  upgradeType: 0
+  statToUpgrade: 18
+  currentUpgradeAmount: 0
+  maxUpgrades: 1
+  upgradeAdd: 0
+  prerequisites:
+  - {fileID: 11400000, guid: 449b4c5c860c46c4babbe5fe3c8bcbef, type: 2}
+  costs:
+  - resourceType: 4
+    resourceIcon: {fileID: -5817558424466443108, guid: 27e62a6ada837a740b5180517b2f42e1, type: 3}
+    baseCost: 250
+    costIncrement: 0
+  isUnlocked: 0
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0
+  weaponID: Ez win

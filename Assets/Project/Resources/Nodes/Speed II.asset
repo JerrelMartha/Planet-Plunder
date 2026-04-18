@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b14e5a2ac92ad46877b856ecc5b87a, type: 3}
+  m_Name: Speed II
+  m_EditorClassIdentifier: Assembly-CSharp::NodeSO
+  nodeID: MoveSpeed_02
+  upgradeName: Speed II
+  upgradeDescription: You can move faster.
+  upgradeIcon: {fileID: -1518713475451153952, guid: f3052844ec28e4547a6b65b271315cfd, type: 3}
+  upgradeType: 1
+  statToUpgrade: 0
+  currentUpgradeAmount: 0
+  maxUpgrades: 2
+  upgradeAdd: 3
+  prerequisites:
+  - {fileID: 11400000, guid: 57a208238115dcd449c12300b0189ba2, type: 2}
+  costs:
+  - resourceType: 4
+    resourceIcon: {fileID: -5817558424466443108, guid: 27e62a6ada837a740b5180517b2f42e1, type: 3}
+    baseCost: 10
+    costIncrement: 5
+  isUnlocked: 0
+  isUnlockedByDefault: 0
+  isVisible: 0
+  isPurchased: 0
+  isMaxedOut: 0
